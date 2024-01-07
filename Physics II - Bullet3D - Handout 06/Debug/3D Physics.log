@@ -2,20 +2,20 @@
   Color.cpp
   glmath.cpp
   Light.cpp
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(12,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(27,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(43,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(53,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(53,26): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(72,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(87,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(103,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(600,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(618,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(618,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(758,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(778,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glmath.cpp(778,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(12,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(27,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(43,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(53,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(53,26): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(72,13): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(87,17): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(103,34): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(600,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(618,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(618,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(758,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(778,10): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\glmath.cpp(778,33): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
   log.cpp
   Main.cpp
   ModuleAudio.cpp
@@ -23,10 +23,10 @@ D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\glm
   ModuleInput.cpp
   ModulePhysics3D.cpp
   ModulePlayer.cpp
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(158,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(158,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(159,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(159,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(158,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(158,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(159,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\ModulePlayer.cpp(159,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   ModuleRenderer3D.cpp
   ModuleSceneIntro.cpp
   ModuleWindow.cpp
@@ -104,4 +104,4 @@ LinearMath_debug.lib(btConvexHullComputer.obj) : warning LNK4099: no se encontr�
 LinearMath_debug.lib(btGeometryUtil.obj) : warning LNK4099: no se encontró PDB '' con 'LinearMath_debug.lib(btGeometryUtil.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 LinearMath_debug.lib(btQuickprof.obj) : warning LNK4099: no se encontró PDB '' con 'LinearMath_debug.lib(btQuickprof.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
 LinearMath_debug.lib(btVector3.obj) : warning LNK4099: no se encontró PDB '' con 'LinearMath_debug.lib(btVector3.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  3D Physics.vcxproj -> D:\UNI\SEGUNDO\Semestre 1\Física\RaceCar\Physics II - Bullet3D - Handout 06\Debug\3D Physics - class6.exe
+  3D Physics.vcxproj -> D:\UNI\SEGUNDO\Semestre 1\Física\RacingGame\Physics II - Bullet3D - Handout 06\Debug\3D Physics - class6.exe
