@@ -52,6 +52,7 @@ public:
 	void Brake(float force);
 	void Turn(float degrees);
 	float GetKmh() const;
+	void Orient(float angle);
 public:
 
 	VehicleInfo info;

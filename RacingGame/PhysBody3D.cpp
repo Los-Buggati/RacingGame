@@ -57,3 +57,48 @@ void PhysBody3D::SetAsSensor(bool is_sensor)
 			body->setCollisionFlags(body->getCollisionFlags() & ~btCollisionObject::CF_NO_CONTACT_RESPONSE);
 	}
 }
+
+void PhysBody3D::SetRotation(btQuaternion q)
+{
+	btTransform t = body->getWorldTransform();
+	t.setRotation(q);
+	body->setWorldTransform(t);
+}
+
+btQuaternion PhysBody3D::GetRotation() {
+	btQuaternion q;
+	btTransform t = body->getWorldTransform();
+	q = t.getRotation();
+	return q;
+}
+
+btVector3 PhysBody3D::GetPos() {
+
+	btVector3 a = body->getWorldTransform().getOrigin();
+
+	return a;
+}
+
+void PhysBody3D::SetLinearVelocity(float x, float y, float z)
+{
+	btVector3 v(x, y, z);
+	body->setLinearVelocity(v);
+}
+
+void PhysBody3D::SetAngularVelocity(float x, float y, float z)
+{
+	btVector3 v(x, y, z);
+	body->setAngularVelocity(v);
+}
+
+btVector3 PhysBody3D::GetLinearVelocity() {
+	btVector3 returnV;
+	returnV = body->getLinearVelocity();
+	return returnV;
+}
+
+btVector3 PhysBody3D::GetAngularVelocity() {
+	btVector3 returnV;
+	returnV = body->getAngularVelocity();
+	return returnV;
+}

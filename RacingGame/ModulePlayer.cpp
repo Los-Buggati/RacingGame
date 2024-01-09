@@ -34,6 +34,11 @@ update_status ModulePlayer::Update(float dt)
 {
 	myCar = App->network->clientIndex;
 
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	{
+		Respawn(myCar);
+	}
+
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && carCount < 2)
 	{
 		CreateCar(carCount);
@@ -90,6 +95,13 @@ update_status ModulePlayer::Update(float dt)
 			up[myCar] = true;
 		}
 		else up[myCar] = false;
+		
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			acceleration[myCar] = -MAX_ACCELERATION;
+			back[myCar] = true;
+		}
+		else back[myCar] = false;
 
 		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 		{
@@ -107,7 +119,7 @@ update_status ModulePlayer::Update(float dt)
 		}
 		else right[myCar] = false;
 
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
 		{
 			brake[myCar] = BRAKE_POWER;
 			down[myCar] = true;
@@ -238,6 +250,14 @@ void ModulePlayer::CreateCar(int carIndex)
 
 	vehicle[carIndex] = App->physics->AddVehicle(car);
 	vehicle[carIndex]->collision_listeners.add(this); // Add this module as listener to callbacks from vehicle
-	vehicle[carIndex]->SetPos(carIndex * 5, 5, 10);
+	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+}
+
+void ModulePlayer:: Respawn(int carIndex)
+{
+	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
+	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
+	vehicle[carIndex]->Orient(0);
 }
 

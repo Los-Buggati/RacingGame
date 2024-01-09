@@ -21,6 +21,7 @@ public:
 	bool CleanUp();
 
 	void CreateCar(int carIndex);
+	void Respawn(int carIndex);
 
 public:
 
@@ -35,6 +36,9 @@ public:
 	bool down[2] = { false, false };
 	bool left[2] = { false, false };
 	bool right[2] = { false, false };
+	bool back[2] = { false, false };
 	bool impulseActivated[2] = { false, false};
 	int myCar = 0;
+
+	vec3 InitPos = { 5,2,10 };
 };
