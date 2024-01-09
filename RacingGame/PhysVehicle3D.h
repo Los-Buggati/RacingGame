@@ -52,6 +52,7 @@ public:
 	void Brake(float force);
 	void Turn(float degrees);
 	float GetKmh() const;
+	Cube CreateChassisCube(const vec3 size, const vec3 position, const Color color);
 public:
 
 	VehicleInfo info;
