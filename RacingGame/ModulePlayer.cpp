@@ -140,6 +140,16 @@ update_status ModulePlayer::Update(float dt)
 		char title[80];
 		sprintf_s(title, "%.1f Km/h", vehicle[myCar]->GetKmh());
 		App->window->SetTitle(title);
+
+		//change car mass
+		if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT && vehicle[myCar]->info.mass == 500.0f)
+		{
+			vehicle[myCar]->info.mass = 250.0f;
+		}
+		else if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT && vehicle[myCar]->info.mass == 250.0f)
+		{
+			vehicle[myCar]->info.mass = 500.0f;
+		}
 	}
 
 	return UPDATE_CONTINUE;
