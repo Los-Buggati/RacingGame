@@ -31,12 +31,7 @@ bool ModuleSceneIntro::Start()
 	coin.SetPos(5, 3, 5);
 	coin.color = Blue;
 
-	platform = Cube(50, 1, 30);
-	platform.SetPos(0, 1, 20);
-	platform.color = White;
-
-	physBody = App->physics->AddBody(platform, 0.0f);
-	platform.physbody = physBody;
+	CreateCube(vec3(50, 1, 30), vec3(5, 3, 5), vec3(0,0,0), White);
 
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
@@ -64,7 +59,10 @@ update_status ModuleSceneIntro::Update(float dt)
 	coin.SetRotation(angle, vec3(0, 1, 0));
 	coin.Render();
 
-	platform.Render();
+	for (auto& cube : cubes)
+	{
+		cube.Render();
+	}
 
 	float radius = 0.3f;
 	float logoAngle = angle - 90;
@@ -107,3 +105,17 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 }
 
+void ModuleSceneIntro::CreateCube(vec3 size, vec3 position, vec3 rotation, Color color) 
+{
+	Cube platform(size.x, size.y, size.z);
+	platform.SetPos(position.x, position.y, position.z);
+	platform.SetRotation(rotation.x, vec3(1, 0, 0));
+	platform.SetRotation(rotation.y, vec3(0, 1, 0));
+	platform.SetRotation(rotation.z, vec3(0, 0, 1));
+	platform.color = color;
+
+	auto physBody = App->physics->AddBody(platform, 0.0f);
+	platform.physbody = physBody;
+
+	cubes.push_back(platform);
+}
