@@ -8,6 +8,10 @@
 #pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
 #pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 
+
+#include "SDL_image/include/SDL_image.h"
+#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
+
 ModuleRenderer3D::ModuleRenderer3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }
@@ -88,6 +92,9 @@ bool ModuleRenderer3D::Init()
 
 		GLfloat MaterialDiffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
 		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MaterialDiffuse);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
@@ -149,4 +156,58 @@ void ModuleRenderer3D::OnResize(int width, int height)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+
+uint ModuleRenderer3D::LoadTexture(const char* path) {
+	LOG("Loading texture");
+	SDL_Surface* surface = IMG_Load(path);
+
+	if (surface == NULL)
+	{
+		LOG("error loading image %s", IMG_GetError());
+		return 0;
+	}
+
+	Uint32 texture = NULL;
+
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
+
+	int ret = glGetError();
+	if (ret != GL_NO_ERROR)
+	{
+		LOG("GL Error in loadTexture: %i", ret);
+	}
+
+	SDL_FreeSurface(surface);
+	return texture;
+}
+
+void ModuleRenderer3D::DrawTexture(uint texture, vec3 pos, float size, float angle, vec3 axis) 
+{
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	float halfSize = size * 0.5f;
+
+	glPushMatrix();
+	glTranslatef(pos.x, pos.y, pos.z);
+	glRotatef(angle, axis.x, axis.y, axis.z);
+
+	glBegin(GL_QUADS);
+
+	glTexCoord2f(0, 0); glVertex3f(-halfSize, -halfSize, 0);
+	glTexCoord2f(0, 1); glVertex3f(-halfSize, halfSize, 0);
+	glTexCoord2f(1, 1); glVertex3f(halfSize, halfSize, 0);
+	glTexCoord2f(1, 0); glVertex3f(halfSize, -halfSize, 0);
+
+	glEnd();
+
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
 }

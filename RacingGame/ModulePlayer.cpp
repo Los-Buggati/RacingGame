@@ -167,7 +167,7 @@ void ModulePlayer::CreateCar(int carIndex)
 	car.maxSuspensionTravelCm = 1000.0f;
 	car.frictionSlip = 50.5;
 	car.maxSuspensionForce = 6000.0f;
-	if (carIndex == 0) car.wheelColor = Blue;
+	if (carIndex == 0) car.wheelColor = Black;
 	else car.wheelColor = Red;
 
 

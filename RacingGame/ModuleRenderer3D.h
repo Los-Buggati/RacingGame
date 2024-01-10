@@ -19,6 +19,9 @@ public:
 
 	void OnResize(int width, int height);
 
+	uint LoadTexture(const char* path);
+	void DrawTexture(uint texture, vec3 pos, float size, float angle, vec3 axis);
+
 public:
 
 	Light lights[MAX_LIGHTS];

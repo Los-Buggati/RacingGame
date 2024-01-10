@@ -49,5 +49,7 @@ public:
 
 	PhysBody3D* physBody;
 
+	uint logo, logo2, road;
+
 	float angle = 0.0f;
 };
