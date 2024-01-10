@@ -22,6 +22,8 @@ bool ModuleMenu::Start()
 	menu2 = App->textures->Load("Assets/menu2.png");
 	menu3 = App->textures->Load("Assets/menu3.png");
 	menu4 = App->textures->Load("Assets/menu4.png");
+	start = App->textures->Load("Assets/start.png");
+	ready = App->textures->Load("Assets/ready.png");
 
 	return ret;
 }
@@ -37,24 +39,40 @@ bool ModuleMenu::CleanUp()
 // Update
 update_status ModuleMenu::Update(float dt)
 {
+	if (isOnMenu)
+	{
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
+		{
+			if (menuIndex > 1) menuIndex--;
+			else menuIndex = 4;
+		}
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+		{
+			if (menuIndex < 4) menuIndex++;
+			else menuIndex = 1;
+		}
 
-	if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN)
-	{
-		if (menuIndex > 1) menuIndex--;
-		else menuIndex = 4;
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			if (menuIndex == 1)
+			{
+				App->network->optionsIndex = 1;
+				isOnMenu = false;
+			}
+			else if (menuIndex == 2)
+			{
+				App->network->optionsIndex = 2;
+				isOnMenu = false;
+			}
+			else if (menuIndex == 3) App->network->optionsIndex = 3;
+			else if (menuIndex == 4) return UPDATE_STOP;
+		}
 	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN)
+	
+	if (!isOnMenu)
 	{
-		if (menuIndex < 4) menuIndex++;
-		else menuIndex = 1;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
-	{
-		if (menuIndex == 1) App->network->optionsIndex = 1;
-		else if (menuIndex == 2) App->network->optionsIndex = 2;
-		else if (menuIndex == 3) App->network->optionsIndex = 3;
-		else if (menuIndex == 4) return UPDATE_STOP;
+		if (App->network->optionsIndex == 1) menuIndex = 5;
+		else if (App->network->optionsIndex == 2) menuIndex = 6;
 	}
 
 	int imageWidth = 3840;
@@ -70,6 +88,8 @@ update_status ModuleMenu::Update(float dt)
 	else if (menuIndex == 2) App->renderer->Blit(menu2, xPos, yPos, NULL);
 	else if (menuIndex == 3) App->renderer->Blit(menu3, xPos, yPos, NULL);
 	else if (menuIndex == 4) App->renderer->Blit(menu4, xPos, yPos, NULL);
+	else if (menuIndex == 5) App->renderer->Blit(start, xPos, yPos, NULL);
+	else if (menuIndex == 6) App->renderer->Blit(ready, xPos, yPos, NULL);
 
 	return UPDATE_CONTINUE;
 }

@@ -18,6 +18,11 @@ public:
 	SDL_Texture* menu3;
 	SDL_Texture* menu4;
 
+	SDL_Texture* start;
+	SDL_Texture* ready;
+
+	bool isOnMenu = true;
+
 	int menuIndex = 1;
 
 };

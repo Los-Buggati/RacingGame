@@ -171,6 +171,7 @@ void ModuleNetwork::CreateServer()
 		printf("Server created at %s\n", host);
 
 		serverCreated = true;
+		CreateClient();
 	}
 	serverHost = true;
 }
