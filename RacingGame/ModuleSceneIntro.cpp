@@ -31,7 +31,22 @@ bool ModuleSceneIntro::Start()
 	coin.SetPos(5, 3, 5);
 	coin.color = Blue;
 
-	CreateCube(vec3(50, 1, 30), vec3(5, 3, 5), vec3(0,0,0), White);
+	CreateCube(vec3(2, 5, 1), vec3(0, 7, 10), vec3(0, 0, 0), Black);
+	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 7, 9), vec3(0, 90, 0), White);
+
+	CreateCube(vec3(2, 5, 1), vec3(2, 7, 10), vec3(0, 0, 0), Black);
+	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(2, 7, 9), vec3(0, 90, 0), White);
+
+	CreateCube(vec3(2, 5, 1), vec3(4, 7, 10), vec3(0, 0, 0), Black);
+	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(4, 7, 9), vec3(0, 90, 0), White);
+
+	CreateCube(vec3(2, 5, 1), vec3(6, 7, 10), vec3(0, 0, 0), Black);
+	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(6, 7, 9), vec3(0, 90, 0), White);
+
+	CreateCube(vec3(2, 5, 1), vec3(8, 7, 10), vec3(0, 0, 0), Black);
+	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(8, 7, 9), vec3(0, 90, 0), White);
+
+	CreateCube(vec3(50, 1, 50), vec3(5, 1, 5), vec3(0, 0, 0), White);
 
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
@@ -58,6 +73,11 @@ update_status ModuleSceneIntro::Update(float dt)
 	angle++;
 	coin.SetRotation(angle, vec3(0, 1, 0));
 	coin.Render();
+
+	for (int i = 0; i < 5; i++)
+	{
+		light[i].Render();
+	}
 
 	for (auto& cube : cubes)
 	{
@@ -98,6 +118,23 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	App->renderer3D->DrawTexture(logo, { logoPos.getX(), logoPos.getY(), logoPos.getZ() }, 0.7f, carAngle, vec3(0, 1, 0));
 
+	if (lightIndex < 6)lightTimer++;
+	if (lightTimer > 100 && lightIndex < 5)
+	{
+		lightTimer = 0;
+		light[lightIndex].color = Red;
+		lightIndex++;
+	}
+	else if (lightTimer > 150 && lightIndex == 5)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			light[i].color = Green;
+		}
+		lightIndex = 6;
+	}
+	
+
 	return UPDATE_CONTINUE;
 }
 
@@ -105,17 +142,50 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 }
 
-void ModuleSceneIntro::CreateCube(vec3 size, vec3 position, vec3 rotation, Color color) 
+Cube ModuleSceneIntro::CreateCube(vec3 size, vec3 position, vec3 rotation, Color color) 
 {
 	Cube platform(size.x, size.y, size.z);
 	platform.SetPos(position.x, position.y, position.z);
-	platform.SetRotation(rotation.x, vec3(1, 0, 0));
-	platform.SetRotation(rotation.y, vec3(0, 1, 0));
-	platform.SetRotation(rotation.z, vec3(0, 0, 1));
+
+
+	btQuaternion quat;
+	quat.setEulerZYX(rotation.z * DEGTORAD, rotation.y * DEGTORAD, rotation.x * DEGTORAD);
+
+	float angle = quat.getAngle() * RADTODEG;
+	btVector3 axis = quat.getAxis();
+
+	platform.SetRotation(angle, vec3(axis.getX(), axis.getY(), axis.getZ()));
+
 	platform.color = color;
 
 	auto physBody = App->physics->AddBody(platform, 0.0f);
 	platform.physbody = physBody;
 
 	cubes.push_back(platform);
+
+	return platform;
 }
+
+Cylinder ModuleSceneIntro::CreateCylinder(vec2 size, vec3 position, vec3 rotation, Color color)
+{
+	Cylinder platform(size.x, size.y);
+	platform.SetPos(position.x, position.y, position.z);
+
+	btQuaternion quat;
+	quat.setEulerZYX(rotation.z * DEGTORAD, rotation.y * DEGTORAD, rotation.x * DEGTORAD);
+
+	float angle = quat.getAngle() * RADTODEG;
+	btVector3 axis = quat.getAxis();
+
+	platform.SetRotation(angle, vec3(axis.getX(), axis.getY(), axis.getZ()));
+
+	platform.color = color;
+
+	auto physBody = App->physics->AddBody(platform, 0.0f);
+	platform.physbody = physBody;
+
+	return platform;
+}
+
+
+
