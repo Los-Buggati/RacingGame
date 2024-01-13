@@ -38,6 +38,6 @@ private:
 	SDL_Rect screenRect;
 
 	// The modules that should be switched after the first step
-	//Module* moduleToEnable = nullptr;
-	//Module* moduleToDisable = nullptr;
+	Module* moduleToEnable = nullptr;
+	Module* moduleToDisable = nullptr;
 };
