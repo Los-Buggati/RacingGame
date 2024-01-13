@@ -33,6 +33,12 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update(float dt)
 {
 	myCar = App->network->clientIndex;
+	
+
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()< Vehicle_Fall_Dist)
+	{
+		Respawn(myCar);
+	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && carCount < 2)
 	{
@@ -91,6 +97,13 @@ update_status ModulePlayer::Update(float dt)
 			up[myCar] = true;
 		}
 		else up[myCar] = false;
+		
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			acceleration[myCar] = -MAX_ACCELERATION;
+			back[myCar] = true;
+		}
+		else back[myCar] = false;
 
 		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 		{
@@ -108,7 +121,7 @@ update_status ModulePlayer::Update(float dt)
 		}
 		else right[myCar] = false;
 
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
 		{
 			if (vehicle[myCar]->GetKmh() > 0.0f) brake[myCar] = BRAKE_POWER;
 			else acceleration[myCar] = -MAX_ACCELERATION / 2;
@@ -130,6 +143,32 @@ update_status ModulePlayer::Update(float dt)
 		char title[80];
 		sprintf_s(title, "%.1f Km/h", vehicle[myCar]->GetKmh());
 		App->window->SetTitle(title);
+
+		//change car mass
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		{
+			vehicle[myCar]->info.mass++;
+			LOG("%f", vehicle[myCar]->info.mass);
+		}
+		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+		{
+			vehicle[myCar]->info.mass--;
+		}
+		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		{
+			if (vehicle[myCar]->applyBrakeForce)
+			{
+				vehicle[myCar]->applyBrakeForce=false;
+				vehicle[myCar]->applyEngineForce=false;
+				vehicle[myCar]->applySteering=false;
+			}
+			else if (vehicle[myCar]->applyBrakeForce==false)
+			{
+				vehicle[myCar]->applyBrakeForce = true;
+				vehicle[myCar]->applyEngineForce = true;
+				vehicle[myCar]->applySteering = true;
+			}
+		}
 	}
 
 	return UPDATE_CONTINUE;
@@ -147,6 +186,15 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 				if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) impulseActivated[currentCar] = true;
 			}
 			else impulseActivated[myCar] = true;
+		}
+	}
+	for (int currentCar = 0; currentCar < carCount; currentCar++)
+	{
+		if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar])
+		{
+			// Modify the friction here based on your requirements
+			// For example, you can set a higher friction when colliding with mud
+			vehicle[currentCar]->vehicle->updateFriction(-0.015f); // Adjust the value as needed
 		}
 	}
 }
@@ -240,6 +288,14 @@ void ModulePlayer::CreateCar(int carIndex)
 
 	vehicle[carIndex] = App->physics->AddVehicle(car);
 	vehicle[carIndex]->collision_listeners.add(this); // Add this module as listener to callbacks from vehicle
-	vehicle[carIndex]->SetPos(carIndex * 5, 35, 0);
+	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+}
+
+void ModulePlayer:: Respawn(int carIndex)
+{
+	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
+	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
+	vehicle[carIndex]->Orient(0);
 }
 

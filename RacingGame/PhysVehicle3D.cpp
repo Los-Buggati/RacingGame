@@ -2294,11 +2294,14 @@ Cube PhysVehicle3D::CreateChassisCube(const vec3 size, const vec3 position, cons
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::ApplyEngineForce(float force)
 {
-	for(int i = 0; i < vehicle->getNumWheels(); ++i)
+	if (applyEngineForce)
 	{
-		if(info.wheels[i].drive == true)
+		for (int i = 0; i < vehicle->getNumWheels(); ++i)
 		{
-			vehicle->applyEngineForce(force, i);
+			if (info.wheels[i].drive == true)
+			{
+				vehicle->applyEngineForce(force, i);
+			}
 		}
 	}
 }
@@ -2306,11 +2309,14 @@ void PhysVehicle3D::ApplyEngineForce(float force)
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::Brake(float force)
 {
-	for(int i = 0; i < vehicle->getNumWheels(); ++i)
+	if (applyBrakeForce)
 	{
-		if(info.wheels[i].brake == true)
+		for (int i = 0; i < vehicle->getNumWheels(); ++i)
 		{
-			vehicle->setBrake(force, i);
+			if (info.wheels[i].brake == true)
+			{
+				vehicle->setBrake(force, i);
+			}
 		}
 	}
 }
@@ -2318,17 +2324,42 @@ void PhysVehicle3D::Brake(float force)
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::Turn(float degrees)
 {
-	for(int i = 0; i < vehicle->getNumWheels(); ++i)
+	if (applySteering)
 	{
-		if(info.wheels[i].steering == true)
+		for (int i = 0; i < vehicle->getNumWheels(); ++i)
 		{
-			vehicle->setSteeringValue(degrees, i);
+			if (info.wheels[i].steering == true)
+			{
+				vehicle->setSteeringValue(degrees, i);
+			}
 		}
-	}
+	}	
 }
 
 // ----------------------------------------------------------------------------
 float PhysVehicle3D::GetKmh() const
 {
 	return vehicle->getCurrentSpeedKmHour();
+}
+
+void PhysVehicle3D::Orient(float angle)
+{
+	float matrix[16];
+	memset(matrix, 0.0f, sizeof(matrix));
+
+	// Keep position
+	vec3 p = { GetPos().getX(), GetPos().getY(), GetPos().getZ() };
+	matrix[12] = p.x;
+	matrix[13] = p.y;
+	matrix[14] = p.z;
+	matrix[15] = 1;
+
+	// Rotate the body by angle
+	matrix[0] = cos(angle);
+	matrix[2] = -sin(angle);
+	matrix[5] = 1;
+	matrix[8] = sin(angle);
+	matrix[10] = cos(angle);
+
+	SetTransform(matrix);
 }

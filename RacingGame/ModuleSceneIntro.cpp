@@ -31,6 +31,15 @@ bool ModuleSceneIntro::Start()
 	coin.SetPos(5, 3, 5);
 	coin.color = Blue;
 
+	platform = Cube(50, 1, 30);
+	platform.SetPos(0, 1, 20);
+	platform.color = White;
+	
+	mud=App->physics->AddBody(Cube(50, 6, 30), 0.0);
+	mud->SetPos(0, 1, 30);
+	//mud->collision_listeners.add(this);
+	mud->SetAsSensor(true);
+
 	CreateCube(vec3(2, 5, 1), vec3(0, 40, 10), vec3(0, 0, 0), Black);
 	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 

@@ -53,6 +53,11 @@ public:
 	void Turn(float degrees);
 	float GetKmh() const;
 	Cube CreateChassisCube(const vec3 size, const vec3 position, const Color color);
+	void Orient(float angle);
+     
+	bool applyEngineForce;    // Flag to control engine force
+	bool applyBrakeForce;     // Flag to control brake force
+	bool applySteering;
 public:
 
 	VehicleInfo info;
