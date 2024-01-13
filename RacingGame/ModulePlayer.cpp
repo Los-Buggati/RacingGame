@@ -240,6 +240,6 @@ void ModulePlayer::CreateCar(int carIndex)
 
 	vehicle[carIndex] = App->physics->AddVehicle(car);
 	vehicle[carIndex]->collision_listeners.add(this); // Add this module as listener to callbacks from vehicle
-	vehicle[carIndex]->SetPos(carIndex * 5, 5, 10);
+	vehicle[carIndex]->SetPos(carIndex * 5, 5, 50);
 }
 
