@@ -38,10 +38,7 @@ bool Win::CleanUp()
 update_status Win::Update(float dt)
 {
 
-	/*if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-	{
-		
-	}*/
+	
 	
 	
 
