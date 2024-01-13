@@ -32,6 +32,12 @@ bool ModuleSceneIntro::Start()
 	platform = Cube(50, 1, 30);
 	platform.SetPos(0, 1, 20);
 	platform.color = White;
+	
+	mud=App->physics->AddBody(Cube(50, 6, 30), 0.0);
+	mud->SetPos(0, 1, 30);
+	//mud->collision_listeners.add(this);
+	mud->SetAsSensor(true);
+	
 
 	physBody = App->physics->AddBody(platform, 0.0f);
 	platform.physbody = physBody;

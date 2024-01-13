@@ -33,8 +33,9 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update(float dt)
 {
 	myCar = App->network->clientIndex;
+	
 
-	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()< Vehicle_Fall_Dist)
 	{
 		Respawn(myCar);
 	}
@@ -183,6 +184,15 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 				if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) impulseActivated[currentCar] = true;
 			}
 			else impulseActivated[myCar] = true;
+		}
+	}
+	for (int currentCar = 0; currentCar < carCount; currentCar++)
+	{
+		if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar])
+		{
+			// Modify the friction here based on your requirements
+			// For example, you can set a higher friction when colliding with mud
+			vehicle[currentCar]->vehicle->updateFriction(-0.015f); // Adjust the value as needed
 		}
 	}
 }
