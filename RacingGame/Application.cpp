@@ -11,9 +11,10 @@ Application::Application()
 	physics = new ModulePhysics3D(this);
 	player = new ModulePlayer(this, false);
 	network = new ModuleNetwork(this);
-	menu = new ModuleMenu(this);
+	menu = new ModuleMenu(this, false);
 	renderer = new ModuleRender(this);
 	textures = new ModuleTextures(this);
+	win = new Win(this, true);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -30,6 +31,7 @@ Application::Application()
 	AddModule(physics);
 	
 	// Scenes
+	AddModule(win);
 	AddModule(menu);
 	AddModule(scene_intro);
 	AddModule(player);

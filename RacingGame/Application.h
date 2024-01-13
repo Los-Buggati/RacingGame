@@ -16,6 +16,7 @@
 #include "ModuleMenu.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "Win.h"
 
 class Application
 {
@@ -32,6 +33,7 @@ public:
 	ModuleMenu* menu;
 	ModuleTextures* textures;
 	ModuleRender* renderer;
+	Win* win;
 
 private:
 
