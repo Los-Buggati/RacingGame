@@ -52,6 +52,7 @@ bool ModulePhysics3D::Start()
 
 	world = new btDiscreteDynamicsWorld(dispatcher, broad_phase, solver, collision_conf);
 	world->setDebugDrawer(debug_draw);
+	GRAVITY = btVector3(0.0f, -10.0f, 0.0f); 
 	world->setGravity(GRAVITY);
 	vehicle_raycaster = new btDefaultVehicleRaycaster(world);
 
@@ -127,14 +128,30 @@ update_status ModulePhysics3D::Update(float dt)
 			item = item->next;
 		}
 
-		if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		/*if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
 			Sphere s(1);
 			s.SetPos(App->camera->Position.x, App->camera->Position.y, App->camera->Position.z);
 			float force = 30.0f;
 			AddBody(s)->Push(-(App->camera->Z.x * force), -(App->camera->Z.y * force), -(App->camera->Z.z * force));
-		}
+		}*/
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+	{
+		GRAVITY.setY(GRAVITY.getY() + 1);
+		LOG("%i", GRAVITY.getY());
+		world->setGravity(GRAVITY);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+	{
+		GRAVITY.setY(GRAVITY.getY() - 1);
+		LOG("%i", GRAVITY.getY());
+		world->setGravity(GRAVITY);
+	}
+	
+
 
 	return UPDATE_CONTINUE;
 }
@@ -329,6 +346,10 @@ PhysVehicle3D* ModulePhysics3D::AddVehicle(const VehicleInfo& info)
 	// ---------------------
 
 	PhysVehicle3D* pvehicle = new PhysVehicle3D(body, vehicle, info);
+	pvehicle->applyEngineForce = true;
+	pvehicle->applyBrakeForce = true;
+	pvehicle->applySteering = true;
+
 	body->setUserPointer(pvehicle); // Add our custom class as "user pointer" within bullet body
 	world->addVehicle(vehicle);
 	vehicles.add(pvehicle);

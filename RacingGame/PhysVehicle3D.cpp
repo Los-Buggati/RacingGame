@@ -55,11 +55,14 @@ void PhysVehicle3D::Render()
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::ApplyEngineForce(float force)
 {
-	for(int i = 0; i < vehicle->getNumWheels(); ++i)
+	if (applyEngineForce)
 	{
-		if(info.wheels[i].drive == true)
+		for (int i = 0; i < vehicle->getNumWheels(); ++i)
 		{
-			vehicle->applyEngineForce(force, i);
+			if (info.wheels[i].drive == true)
+			{
+				vehicle->applyEngineForce(force, i);
+			}
 		}
 	}
 }
@@ -67,11 +70,14 @@ void PhysVehicle3D::ApplyEngineForce(float force)
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::Brake(float force)
 {
-	for(int i = 0; i < vehicle->getNumWheels(); ++i)
+	if (applyBrakeForce)
 	{
-		if(info.wheels[i].brake == true)
+		for (int i = 0; i < vehicle->getNumWheels(); ++i)
 		{
-			vehicle->setBrake(force, i);
+			if (info.wheels[i].brake == true)
+			{
+				vehicle->setBrake(force, i);
+			}
 		}
 	}
 }
@@ -79,13 +85,16 @@ void PhysVehicle3D::Brake(float force)
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::Turn(float degrees)
 {
-	for(int i = 0; i < vehicle->getNumWheels(); ++i)
+	if (applySteering)
 	{
-		if(info.wheels[i].steering == true)
+		for (int i = 0; i < vehicle->getNumWheels(); ++i)
 		{
-			vehicle->setSteeringValue(degrees, i);
+			if (info.wheels[i].steering == true)
+			{
+				vehicle->setSteeringValue(degrees, i);
+			}
 		}
-	}
+	}	
 }
 
 // ----------------------------------------------------------------------------

@@ -7,7 +7,7 @@
 #include "Bullet/include/btBulletDynamicsCommon.h"
 
 // Recommended scale is 1.0f == 1 meter, no less than 0.2 objects
-#define GRAVITY btVector3(0.0f, -10.0f, 0.0f) 
+//#define GRAVITY btVector3(0.0f, -10.0f, 0.0f) 
 
 class DebugDrawer;
 struct PhysBody3D;
@@ -35,6 +35,8 @@ public:
 	void AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 
+	btVector3 GRAVITY;
+
 private:
 
 	bool debug;
@@ -52,6 +54,9 @@ private:
 	p2List<btDefaultMotionState*> motions;
 	p2List<btTypedConstraint*> constraints;
 	p2List<PhysVehicle3D*> vehicles;
+	int gravedadX;
+	int gravedadY;
+	int gravedadZ;
 };
 
 class DebugDrawer : public btIDebugDraw
@@ -67,6 +72,7 @@ public:
 	void setDebugMode(int debugMode);
 	int	 getDebugMode() const;
 
+	
 	DebugDrawModes mode;
 	Line line;
 	Primitive point;

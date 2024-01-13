@@ -142,13 +142,29 @@ update_status ModulePlayer::Update(float dt)
 		App->window->SetTitle(title);
 
 		//change car mass
-		if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT && vehicle[myCar]->info.mass == 500.0f)
+		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			vehicle[myCar]->info.mass = 250.0f;
+			vehicle[myCar]->info.mass++;
+			LOG("%f", vehicle[myCar]->info.mass);
 		}
-		else if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT && vehicle[myCar]->info.mass == 250.0f)
+		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			vehicle[myCar]->info.mass = 500.0f;
+			vehicle[myCar]->info.mass--;
+		}
+		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		{
+			if (vehicle[myCar]->applyBrakeForce)
+			{
+				vehicle[myCar]->applyBrakeForce=false;
+				vehicle[myCar]->applyEngineForce=false;
+				vehicle[myCar]->applySteering=false;
+			}
+			else if (vehicle[myCar]->applyBrakeForce==false)
+			{
+				vehicle[myCar]->applyBrakeForce = true;
+				vehicle[myCar]->applyEngineForce = true;
+				vehicle[myCar]->applySteering = true;
+			}
 		}
 	}
 

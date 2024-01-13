@@ -53,6 +53,10 @@ public:
 	void Turn(float degrees);
 	float GetKmh() const;
 	void Orient(float angle);
+     
+	bool applyEngineForce;    // Flag to control engine force
+	bool applyBrakeForce;     // Flag to control brake force
+	bool applySteering;
 public:
 
 	VehicleInfo info;
