@@ -31,17 +31,17 @@ bool ModuleSceneIntro::Start()
 	coin.SetPos(5, 3, 5);
 	coin.color = Blue;
 
-	CreateCube(vec3(2, 5, 1), vec3(0, 7, 10), vec3(0, 0, 0), Black);
-	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(0, 40, 10), vec3(0, 0, 0), Black);
+	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(2, 7, 10), vec3(0, 0, 0), Black);
-	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(2, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(2, 40, 10), vec3(0, 0, 0), Black);
+	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(2, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(4, 7, 10), vec3(0, 0, 0), Black);
-	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(4, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(4, 40, 10), vec3(0, 0, 0), Black);
+	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(4, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(6, 7, 10), vec3(0, 0, 0), Black);
-	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(6, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(6, 40, 10), vec3(0, 0, 0), Black);
+	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(6, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(8, 7, 10), vec3(0, 0, 0), Black);
 	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(8, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
@@ -174,7 +174,9 @@ bool ModuleSceneIntro::Start()
 
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
-	road = App->renderer3D->LoadTexture("Assets/road2.png");
+	road = App->renderer3D->LoadTexture("Assets/pistanivelmedio.png");
+	road2 = App->renderer3D->LoadTexture("Assets/arriba.png");
+	road3 = App->renderer3D->LoadTexture("Assets/imagenotaa2.png");
 	arrow = App->renderer3D->LoadTexture("Assets/arrow.png");
 
 	return ret;
@@ -229,7 +231,16 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	//App->renderer3D->DrawTexture(road, { 0, 1.6f, 10.0f }, 50.0f, 90, vec3(1, 0, 0));
 
-	App->renderer3D->DrawTexture(road, { -500, 2.19f, 122.0f }, 530.0f, 90, vec3(1, 0, 0));
+	//App->renderer3D->DrawTexture(road, { -500, 2.19f, 122.0f }, 530.0f, 90, vec3(1, 0, 0));
+
+	//suelo
+	App->renderer3D->DrawTexture(road3, { -220, 2.5f, 100 }, 920.0f, 90, vec3(1, 0, 0));
+
+	//central
+	App->renderer3D->DrawTexture(road, { 70, 34.2f, 60.0f }, 900.0f, 90, vec3(1, 0, 0));
+
+	//arriba
+	App->renderer3D->DrawTexture(road2, { 150, 64.0f, 58.0f }, 550.0f, 90, vec3(1, 0, 0));
 
 	App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
 

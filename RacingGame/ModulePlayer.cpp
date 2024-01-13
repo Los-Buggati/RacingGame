@@ -167,7 +167,7 @@ void ModulePlayer::CreateCar(int carIndex)
 	car.suspensionCompression = 0.83f;
 	car.suspensionDamping = 0.88f;
 	car.maxSuspensionTravelCm = 1000.0f;
-	car.frictionSlip = 50.5;
+	car.frictionSlip = 1;
 	car.maxSuspensionForce = 6000.0f;
 	if (carIndex == 0) car.wheelColor = Black;
 	else car.wheelColor = Red;
@@ -240,6 +240,6 @@ void ModulePlayer::CreateCar(int carIndex)
 
 	vehicle[carIndex] = App->physics->AddVehicle(car);
 	vehicle[carIndex]->collision_listeners.add(this); // Add this module as listener to callbacks from vehicle
-	vehicle[carIndex]->SetPos(carIndex * 5, 5, 50);
+	vehicle[carIndex]->SetPos(carIndex * 5, 35, 0);
 }
 
