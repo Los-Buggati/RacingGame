@@ -23,34 +23,48 @@ bool ModuleSceneIntro::Start()
 	App->camera->LookAt(vec3(0, 0, 15));
 
 	// Create sensor cube (will trigger with car)
-	sensor_cube = App->physics->AddBody(Cube(5, 5, 5), 0.0);
+	sensor_cube = App->physics->AddBody(Cube(5, 2, 5), 0.0);
 	sensor_cube->SetAsSensor(true);
-	sensor_cube->SetPos(0, 3, 0);
+	sensor_cube->SetPos(0, 1, 100);
 
 	coin = Cylinder(1.0f, 0.5f);
 	coin.SetPos(5, 3, 5);
 	coin.color = Blue;
 
 	CreateCube(vec3(2, 5, 1), vec3(0, 7, 10), vec3(0, 0, 0), Black);
-	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 7, 9), vec3(0, 90, 0), White);
+	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(2, 7, 10), vec3(0, 0, 0), Black);
-	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(2, 7, 9), vec3(0, 90, 0), White);
+	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(2, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(4, 7, 10), vec3(0, 0, 0), Black);
-	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(4, 7, 9), vec3(0, 90, 0), White);
+	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(4, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(6, 7, 10), vec3(0, 0, 0), Black);
-	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(6, 7, 9), vec3(0, 90, 0), White);
+	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(6, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(8, 7, 10), vec3(0, 0, 0), Black);
-	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(8, 7, 9), vec3(0, 90, 0), White);
+	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(8, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+
+	constraintPlatform = Cube(15, 0.5f, 30);
+	constraintPlatform.SetPos(0, 3, 80);
+	constraintPlatform.SetRotation(20, vec3(1, 0, 0));
+	constraintPlatformBody = App->physics->AddBody(constraintPlatform, 0.1f);
+	constraintPlatform.physbody = constraintPlatformBody;
+
+	constraintCylinder = Cylinder(0.25f, 15);
+	constraintCylinder.SetPos(0, 3, 80);
+	constraintCylinderBody = App->physics->AddBody(constraintCylinder, 0.0f);
+	constraintCylinder.physbody = constraintCylinderBody;
+
+	btHingeConstraint* hinge = App->physics->AddConstraintHinge(*constraintPlatformBody, *constraintCylinderBody, vec3(0, 0, 0), vec3(0, 0, 0), vec3(1, 0, 0), vec3(1, 0, 0), true);
 
 	CreateCube(vec3(50, 1, 50), vec3(5, 1, 5), vec3(0, 0, 0), White);
 
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
 	road = App->renderer3D->LoadTexture("Assets/road.png");
+	arrow = App->renderer3D->LoadTexture("Assets/arrow.png");
 
 	return ret;
 }
@@ -69,6 +83,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
+	p.wire = false;
 
 	angle++;
 	coin.SetRotation(angle, vec3(0, 1, 0));
@@ -83,6 +98,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	{
 		cube.Render();
 	}
+	constraintPlatform.Render();
+	constraintCylinder.Render();
 
 	float radius = 0.3f;
 	float logoAngle = angle - 90;
@@ -101,7 +118,9 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	App->renderer3D->DrawTexture(road, { 0, 1.6f, 10.0f }, 50.0f, 90, vec3(1, 0, 0));
 
-	const btVector3& chassisPos = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getOrigin();
+	App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
+
+	/*const btVector3& chassisPos = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getOrigin();
 	btQuaternion carRotation = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getRotation();
 	float carAngle = carRotation.getAngle() * RADTODEG;
 
@@ -116,7 +135,7 @@ update_status ModuleSceneIntro::Update(float dt)
 		carAngle = -carAngle;
 	}
 
-	App->renderer3D->DrawTexture(logo, { logoPos.getX(), logoPos.getY(), logoPos.getZ() }, 0.7f, carAngle, vec3(0, 1, 0));
+	App->renderer3D->DrawTexture(logo, { logoPos.getX(), logoPos.getY(), logoPos.getZ() }, 0.7f, carAngle, vec3(0, 1, 0));*/
 
 	if (lightIndex < 6)lightTimer++;
 	if (lightTimer > 100 && lightIndex < 5)
@@ -134,6 +153,7 @@ update_status ModuleSceneIntro::Update(float dt)
 		lightIndex = 6;
 	}
 	
+	constraintPlatformBody->GetRotation(&constraintPlatform.transform);
 
 	return UPDATE_CONTINUE;
 }

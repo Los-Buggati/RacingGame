@@ -59,7 +59,7 @@ public:
 
 	PhysBody3D* physBody;
 
-	uint logo, logo2, road;
+	uint logo, logo2, road, arrow;
 
 	vector<Cube> cubes;
 	vector<Cylinder> cylinders;
@@ -69,4 +69,10 @@ public:
 	Cylinder light[5];
 	int lightTimer = 0;
 	int lightIndex = 0;
+
+	Cube constraintPlatform;
+	Cylinder constraintCylinder;
+
+	PhysBody3D* constraintPlatformBody = nullptr;
+	PhysBody3D* constraintCylinderBody = nullptr;
 };

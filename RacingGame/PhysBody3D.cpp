@@ -38,6 +38,14 @@ void PhysBody3D::SetTransform(const float* matrix) const
 	}
 }
 
+void PhysBody3D::GetRotation(float* matrix) const
+{
+	if (body != NULL && matrix != NULL)
+	{
+		body->getWorldTransform().getBasis().getOpenGLSubMatrix(matrix);
+	}
+}
+
 // ---------------------------------------------------------
 void PhysBody3D::SetPos(float x, float y, float z)
 {
