@@ -37,23 +37,22 @@ bool ModuleSceneIntro::Start()
 	
 	mud=App->physics->AddBody(Cube(50, 6, 30), 0.0);
 	mud->SetPos(0, 1, 30);
-	//mud->collision_listeners.add(this);
 	mud->SetAsSensor(true);
 
-	CreateCube(vec3(2, 5, 1), vec3(0, 40, 10), vec3(0, 0, 0), Black);
-	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(0, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(15, 40, 4), vec3(0, 80, 0), Black);
+	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, 4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(2, 40, 10), vec3(0, 0, 0), Black);
-	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(2, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(15, 40, 2), vec3(0, 80, 0), Black);
+	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, 2), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(4, 40, 10), vec3(0, 0, 0), Black);
-	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(4, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(15, 40, 0), vec3(0, 80, 0), Black);
+	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, 0), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(6, 40, 10), vec3(0, 0, 0), Black);
-	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(6, 40, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(15, 40, -2), vec3(0, 80, 0), Black);
+	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, -2), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
-	CreateCube(vec3(2, 5, 1), vec3(8, 7, 10), vec3(0, 0, 0), Black);
-	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(8, 7, 9), vec3(0, 90, 0), Color(0.1f, 0.1f, 0.1f));
+	CreateCube(vec3(2, 5, 1), vec3(15, 40, -4), vec3(0, 80, 0), Black);
+	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, -4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
 	constraintPlatform = Cube(15, 0.5f, 30);
 	constraintPlatform.SetPos(0, 3, 80);

@@ -41,5 +41,5 @@ public:
 	int myCar = 0;
 
 	btVector3 position;
-	vec3 InitPos = { 5,2,10 };
+	vec3 InitPos = { 5,35,0 };
 };
