@@ -61,7 +61,7 @@ public:
 
 	PhysBody3D* physBody;
 
-	uint logo, logo2, road, road2, road3, arrow;
+	uint logo, logo2, road, road2, road3, road4, arrow;
 
 	vector<Cube> cubes;
 	vector<Cylinder> cylinders;

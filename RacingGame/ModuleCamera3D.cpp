@@ -97,7 +97,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		Position = Reference + Z * length(Position);
 	}
-	else
+	/*else
 	{
 		const btVector3& chassisPos = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getOrigin();
 		vec3 carPos(chassisPos.getX(), chassisPos.getY(), chassisPos.getZ());
@@ -107,7 +107,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 		Position = carPos - rearOffset * 10.0f + vec3(0.0f, 5.0f, 0.0f);
 		LookAt(carPos);
-	}
+	}*/
 
 	// Recalculate matrix -------------
 	CalculateViewMatrix();
