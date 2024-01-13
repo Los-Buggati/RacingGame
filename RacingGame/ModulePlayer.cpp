@@ -34,7 +34,7 @@ update_status ModulePlayer::Update(float dt)
 {
 	myCar = App->network->clientIndex;
 	
-
+	LOG("%f", vehicle[myCar]->GetRotation());
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()< Vehicle_Fall_Dist)
 	{
 		Respawn(myCar);
@@ -170,7 +170,6 @@ update_status ModulePlayer::Update(float dt)
 			}
 		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
@@ -289,6 +288,7 @@ void ModulePlayer::CreateCar(int carIndex)
 	vehicle[carIndex] = App->physics->AddVehicle(car);
 	vehicle[carIndex]->collision_listeners.add(this); // Add this module as listener to callbacks from vehicle
 	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+	vehicle[carIndex]->Orient(3.14/2);
 }
 
 void ModulePlayer:: Respawn(int carIndex)
@@ -296,6 +296,6 @@ void ModulePlayer:: Respawn(int carIndex)
 	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
 	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
 	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
-	vehicle[carIndex]->Orient(0);
+	vehicle[carIndex]->Orient(3.14 / 2);
 }
 
