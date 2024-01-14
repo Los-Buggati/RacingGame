@@ -29,14 +29,14 @@ bool ModuleNetwork::CleanUp()
 update_status ModuleNetwork::Update(float dt)
 {
 	
-	if (App->input->GetKey(SDL_SCANCODE_V) == KEY_DOWN || optionsIndex == 1) 
+	if (optionsIndex == 1) 
 	{
 		optionsIndex = 0;
 		multiplayer = true;
 		CreateServer();
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN || optionsIndex == 2) 
+	if (optionsIndex == 2) 
 	{
 		optionsIndex = 0;
 		multiplayer = true;

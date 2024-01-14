@@ -73,7 +73,7 @@ public:
 
 	PhysBody3D* physBody;
 
-	uint logo, logo2, road, road2, road3, road4, road5, arrow;
+	uint logo, logo2, road, road2, road3, road4, road5, road6, road7, arrow;
 	uint win1, win2, win3, lose1;
 
 	uint startOne, startTwo;

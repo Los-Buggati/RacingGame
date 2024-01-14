@@ -134,7 +134,7 @@ bool ModuleSceneIntro::Start()
 
 	CreateCube(vec3(29.30f, 1.44f, 28.84f), vec3(17.34f, 35.83f, 299.86f), vec3(-0.00f, 0.00f, 0.22f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(81.28f, 1.44f, 25.56f), vec3(-153.80f, 46.16f, -133.28f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(146.39f, 1.44f, 26.31f), vec3(292.86f, 31.69f, 59.99f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(146.39f, 1.44f, 26.31f), vec3(292.86f, 26.81f, 59.99f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(155.00f, 1.44f, 26.39f), vec3(-454.18f, 17.92f, -0.99f), vec3(-0.00f, 0.00f, 0.23f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(57.20f, 1.94f, 26.41f), vec3(56.62f, 33.51f, 2.83f), vec3(0.00f, -0.16f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(57.20f, 1.94f, 25.39f), vec3(91.44f, 33.51f, 9.42f), vec3(0.00f, -0.20f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
@@ -317,6 +317,8 @@ bool ModuleSceneIntro::Start()
 	road3 = App->renderer3D->LoadTexture("Assets/imagenotaa3.png");
 	road4 = App->renderer3D->LoadTexture("Assets/mandanga.png");
 	road5 = App->renderer3D->LoadTexture("Assets/rampa2.png");
+	road6 = App->renderer3D->LoadTexture("Assets/rampa3.png");
+	road7 = App->renderer3D->LoadTexture("Assets/rampa4.png");
 	arrow = App->renderer3D->LoadTexture("Assets/arrow.png");
 	win1 = App->renderer3D->LoadTexture("Assets/win1.png");
 	win2 = App->renderer3D->LoadTexture("Assets/win2.png");
@@ -432,12 +434,12 @@ update_status ModuleSceneIntro::Update(float dt)
 
 
 	btQuaternion quat1;
-	quat1.setEulerZYX(27 * DEGTORAD, 0 * DEGTORAD, 90 * DEGTORAD);
+	quat1.setEulerZYX(24 * DEGTORAD, 2 * DEGTORAD, 90 * DEGTORAD);
 
 	float angle1 = quat1.getAngle() * RADTODEG;
 	btVector3 axis1 = quat1.getAxis();
 
-	App->renderer3D->DrawTexture(road4, { -156, 48, -130 }, 80.0f, angle1, vec3(axis1.getX(), axis1.getY(), axis1.getZ()));
+	App->renderer3D->DrawTexture(road4, { -155, 48, -131 }, 80.0f, angle1, vec3(axis1.getX(), axis1.getY(), axis1.getZ()));
 
 	btQuaternion quat2;
 	quat2.setEulerZYX(13 * DEGTORAD, 0 * DEGTORAD, 90 * DEGTORAD);
@@ -447,13 +449,29 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	App->renderer3D->DrawTexture(road5, { -448, 22, 0 }, 140.0f, angle2, vec3(axis2.getX(), axis2.getY(), axis2.getZ()));
 
+	btQuaternion quat3;
+	quat3.setEulerZYX(24 * DEGTORAD, 180 * DEGTORAD, 90 * DEGTORAD);
+
+	float angle3 = quat3.getAngle() * RADTODEG;
+	btVector3 axis3 = quat3.getAxis();
+
+	App->renderer3D->DrawTexture(road6, { 290, 32, 60 }, 140.0f, angle3, vec3(axis3.getX(), axis3.getY(), axis3.getZ()));
+
+	btQuaternion quat4;
+	quat4.setEulerZYX(12 * DEGTORAD, 180 * DEGTORAD, 90 * DEGTORAD);
+
+	float angle4 = quat4.getAngle() * RADTODEG;
+	btVector3 axis4 = quat4.getAxis();
+
+	App->renderer3D->DrawTexture(road7, { 20, 37.6, 298 }, 26, angle4, vec3(axis4.getX(), axis4.getY(), axis4.getZ()));
+
 	//central
 	App->renderer3D->DrawTexture(road, { 72, 34.6f, 59.0f }, 890.0f, 90, vec3(1, 0, 0));
 
 	//arriba
 	App->renderer3D->DrawTexture(road2, { 152, 64.10f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
 
-	App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
+	//App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
 
 	/*const btVector3& chassisPos = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getOrigin();
 	btQuaternion carRotation = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getRotation();
