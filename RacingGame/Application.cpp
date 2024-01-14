@@ -33,8 +33,8 @@ Application::Application()
 	AddModule(physics);
 	
 	// Scenes
-	AddModule(lose);
 	AddModule(win);
+	AddModule(lose);
 	AddModule(menu);
 	AddModule(scene_intro);
 	AddModule(player);

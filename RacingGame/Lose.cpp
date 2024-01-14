@@ -19,7 +19,7 @@ bool Lose::Start()
 	LOG("Loading Lose assets");
 	bool ret = true;
 
-	Lose1 = App->textures->Load("Assets/YouLose.png");
+	Lose1 = App->textures->Load("Assets/You Lose.png");
 
 	//load music
 
