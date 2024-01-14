@@ -28,7 +28,7 @@ bool ModuleSceneIntro::Start()
 	sensor_cube->SetPos(0, 1, 100);
 
 	coin[1] = Cylinder(1.0f, 0.5f);
-	coin[1].SetPos(16.62f, 39.06f, 302.95f);
+	coin[1].SetPos(16, 39, 302);
 	coin[1].color = Blue;
 	coin1Body = App->physics->AddBody(coin[1], 0.0);
 	coin1Body->SetAsSensor(true);
@@ -113,14 +113,14 @@ bool ModuleSceneIntro::Start()
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, -4), vec3(0, 80, 0), Black);
 	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, -4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
-	constraintPlatform = Cube(15, 0.5f, 30);
-	constraintPlatform.SetPos(0, 3, 80);
-	constraintPlatform.SetRotation(20, vec3(1, 0, 0));
+	constraintPlatform = Cube(26, 0.5f, 40);
+	constraintPlatform.SetPos(150, 68, 80);
+	constraintPlatform.SetRotation(-10, vec3(1, 0, 0));
 	constraintPlatformBody = App->physics->AddBody(constraintPlatform, 0.1f);
 	constraintPlatform.physbody = constraintPlatformBody;
 
-	constraintCylinder = Cylinder(0.25f, 15);
-	constraintCylinder.SetPos(0, 3, 80);
+	constraintCylinder = Cylinder(0.25f, 26);
+	constraintCylinder.SetPos(150, 68, 80);
 	constraintCylinderBody = App->physics->AddBody(constraintCylinder, 0.0f);
 	constraintCylinder.physbody = constraintCylinderBody;
 
@@ -337,7 +337,7 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	angle++;
 	btQuaternion rotationQuaternion = btQuaternion(btVector3(0, 1, 0), angle * DEGTORAD);
-	for (int i = 1; i < 9; i++)
+	for (int i = 1; i < 10; i++)
 	{
 		coin[i].physbody->SetRotation(rotationQuaternion);
 		coin[i].SetRotation(angle, vec3(0, 1, 0));
@@ -356,22 +356,26 @@ update_status ModuleSceneIntro::Update(float dt)
 	constraintPlatform.Render();
 	constraintCylinder.Render();
 
-	float radius = 0.3f;
-	float logoAngle = angle - 90;
-	float logoPosX = 5 - radius * sin(logoAngle * DEGTORAD);
-	float logoPosY = 3;
-	float logoPosZ = 5 - radius * cos(logoAngle * DEGTORAD);
+	for (int i = 1; i < 10; i++)
+	{
+		float radius = 0.3f;
+		float logoAngle = angle - 90;
 
-	App->renderer3D->DrawTexture(logo2, { logoPosX, logoPosY, logoPosZ }, 1.0f, logoAngle, vec3(0, 1, 0));
+		float logoPosX = coin[i].physbody->GetPos().getX() - radius * sin(logoAngle * DEGTORAD);
+		float logoPosY = coin[i].physbody->GetPos().getY();
+		float logoPosZ = coin[i].physbody->GetPos().getZ() - radius * cos(logoAngle * DEGTORAD);
 
-	float logoAngleOtherSide = angle + 90;
+		App->renderer3D->DrawTexture(logo2, { logoPosX, logoPosY, logoPosZ }, 1.0f, logoAngle, vec3(0, 1, 0));
 
-	float logoPosXOtherSide = 5 - radius * sin(logoAngleOtherSide * DEGTORAD);
-	float logoPosZOtherSide = 5 - radius * cos(logoAngleOtherSide * DEGTORAD);
+		float logoAngleOtherSide = angle + 90;
 
-	App->renderer3D->DrawTexture(logo2, { logoPosXOtherSide, logoPosY, logoPosZOtherSide }, 1.0f, logoAngleOtherSide, vec3(0, 1, 0));
+		float logoPosXOtherSide = coin[i].physbody->GetPos().getX() - radius * sin(logoAngleOtherSide * DEGTORAD);
+		float logoPosZOtherSide = coin[i].physbody->GetPos().getZ() - radius * cos(logoAngleOtherSide * DEGTORAD);
 
-	//App->renderer3D->DrawTexture(road, { 0, 1.6f, 10.0f }, 50.0f, 90, vec3(1, 0, 0));
+		App->renderer3D->DrawTexture(logo2, { logoPosXOtherSide, logoPosY, logoPosZOtherSide }, 1.0f, logoAngleOtherSide, vec3(0, 1, 0));
+	}
+
+	//App->renderer3D->DrawTexture(road, { 0, 1.6f, 10.0f }, 50.0f, 0, vec3(0, 0, 0));
 
 	//App->renderer3D->DrawTexture(road, { -500, 2.19f, 122.0f }, 530.0f, 90, vec3(1, 0, 0));
 
