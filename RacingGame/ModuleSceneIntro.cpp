@@ -41,28 +41,28 @@ bool ModuleSceneIntro::Start()
 	sensorWin->SetPos(-60, 36, 0);
 
 	coin[1] = Cylinder(1.0f, 0.5f);
-	coin[1].SetPos(16, 37, 302);
+	coin[1].SetPos(16, 38, 302);
 	coin[1].color = Blue;
 	coin1Body = App->physics->AddBody(coin[1], 0.0);
 	coin1Body->SetAsSensor(true);
 	coin[1].physbody = coin1Body;
 	
 	coin[2] = Cylinder(1.0f, 0.5f);
-	coin[2].SetPos(5, 37, 0);
+	coin[2].SetPos(5, 36, 0);
 	coin[2].color = Blue;
 	coin2Body = App->physics->AddBody(coin[2], 0.0);
 	coin2Body->SetAsSensor(true);
 	coin[2].physbody = coin2Body;
 
 	coin[3] = Cylinder(1.0f, 0.5f);
-	coin[3].SetPos(-53.36f, 37.51f, 176.13f);
+	coin[3].SetPos(-53.36f, 36, 176.13f);
 	coin[3].color = Blue;
 	coin3Body = App->physics->AddBody(coin[3], 0.0);
 	coin3Body->SetAsSensor(true);
 	coin[3].physbody = coin3Body;
 	
 	coin[4] = Cylinder(1.0f, 0.5f);
-	coin[4].SetPos(167.51f, 35.29f, 301.84f);
+	coin[4].SetPos(167.51f, 36, 301.84f);
 	coin[4].color = Blue;
 	coin4Body = App->physics->AddBody(coin[4], 0.0);
 	coin4Body->SetAsSensor(true);
@@ -76,14 +76,14 @@ bool ModuleSceneIntro::Start()
 	coin[5].physbody = coin5Body;
 
 	coin[6] = Cylinder(1.0f, 0.5f);
-	coin[6].SetPos(-10.48f, 63.94f, 125.51f);
+	coin[6].SetPos(-10.48f, 65, 125.51f);
 	coin[6].color = Blue;
 	coin6Body = App->physics->AddBody(coin[6], 0.0);
 	coin6Body->SetAsSensor(true);
 	coin[6].physbody = coin6Body;
 
 	coin[7] = Cylinder(1.0f, 0.5f);
-	coin[7].SetPos(74.93f, 63.94f, 248.73f);
+	coin[7].SetPos(74.93f, 65, 248.73f);
 	coin[7].color = Blue;
 	coin7Body = App->physics->AddBody(coin[7], 0.0);
 	coin7Body->SetAsSensor(true);
@@ -97,7 +97,7 @@ bool ModuleSceneIntro::Start()
 	coin[8].physbody = coin8Body;
 
 	coin[9] = Cylinder(1.0f, 0.5f);
-	coin[9].SetPos(137.90f, 33.51f, 89.16f);
+	coin[9].SetPos(137.90f, 36, 89.16f);
 	coin[9].color = Blue;
 	coin9Body = App->physics->AddBody(coin[9], 0.0);
 	coin9Body->SetAsSensor(true);
@@ -456,7 +456,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	float angle1 = quat1.getAngle() * RADTODEG;
 	btVector3 axis1 = quat1.getAxis();
 
-	App->renderer3D->DrawTexture(road4, { -155, 48, -131 }, 80.0f, angle1, vec3(axis1.getX(), axis1.getY(), axis1.getZ()));
+	App->renderer3D->DrawTexture(road4, { -155, 47.4f, -131 }, 80.0f, angle1, vec3(axis1.getX(), axis1.getY(), axis1.getZ()));
 
 	btQuaternion quat2;
 	quat2.setEulerZYX(13 * DEGTORAD, 0 * DEGTORAD, 90 * DEGTORAD);
@@ -464,7 +464,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	float angle2 = quat2.getAngle() * RADTODEG;
 	btVector3 axis2 = quat2.getAxis();
 
-	App->renderer3D->DrawTexture(road5, { -448, 22, 0 }, 140.0f, angle2, vec3(axis2.getX(), axis2.getY(), axis2.getZ()));
+	App->renderer3D->DrawTexture(road5, { -448, 20.4f, 0 }, 140.0f, angle2, vec3(axis2.getX(), axis2.getY(), axis2.getZ()));
 
 	btQuaternion quat3;
 	quat3.setEulerZYX(24 * DEGTORAD, 180 * DEGTORAD, 90 * DEGTORAD);
@@ -472,7 +472,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	float angle3 = quat3.getAngle() * RADTODEG;
 	btVector3 axis3 = quat3.getAxis();
 
-	App->renderer3D->DrawTexture(road6, { 290, 32, 60 }, 140.0f, angle3, vec3(axis3.getX(), axis3.getY(), axis3.getZ()));
+	App->renderer3D->DrawTexture(road6, { 290, 27, 60 }, 140.0f, angle3, vec3(axis3.getX(), axis3.getY(), axis3.getZ()));
 
 	btQuaternion quat4;
 	quat4.setEulerZYX(12 * DEGTORAD, 180 * DEGTORAD, 90 * DEGTORAD);
@@ -486,7 +486,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	App->renderer3D->DrawTexture(road, { 72, 34.6f, 59.0f }, 890.0f, 90, vec3(1, 0, 0));
 
 	//arriba
-	App->renderer3D->DrawTexture(road2, { 152, 64.10f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
+	App->renderer3D->DrawTexture(road2, { 152, 64.0f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
 
 	//App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
 
@@ -515,14 +515,14 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 	if (lightIndex < 6)lightTimer++;
-	if (lightTimer > 250 && lightIndex < 5)
+	if (lightTimer > 70 && lightIndex < 5)
 	{
 		App->audio->PlayFx(startOne);
 		lightTimer = 0;
 		light[lightIndex].color = Red;
 		lightIndex++;
 	}
-	else if (lightTimer > 250 && lightIndex == 5)
+	else if (lightTimer > 70 && lightIndex == 5)
 	{
 		App->audio->PlayFx(startTwo);
 		for (int i = 0; i < 5; i++)
