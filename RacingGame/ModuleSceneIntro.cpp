@@ -36,6 +36,10 @@ bool ModuleSceneIntro::Start()
 	sensor_cube2->SetAsSensor(true);
 	sensor_cube2->SetPos(-290, 36, 0);
 
+	sensorWin = App->physics->AddBody(Cube(20, 2, 25), 0.0);
+	sensorWin->SetAsSensor(true);
+	sensorWin->SetPos(-60, 36, 0);
+
 	coin[1] = Cylinder(1.0f, 0.5f);
 	coin[1].SetPos(16, 37, 302);
 	coin[1].color = Blue;
