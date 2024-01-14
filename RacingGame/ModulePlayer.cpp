@@ -94,44 +94,46 @@ update_status ModulePlayer::Update(float dt)
 		}
 
 		turn[myCar] = acceleration[myCar] = brake[myCar] = 0.0f;
-
-		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		
+		if (App->scene_intro->lightIndex > 5)
 		{
-			acceleration[myCar] = MAX_ACCELERATION;
-			up[myCar] = true;
-		}
-		else up[myCar] = false;
+			if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+			{
+				acceleration[myCar] = MAX_ACCELERATION;
+				up[myCar] = true;
+			}
+			else up[myCar] = false;
 
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		{
-			acceleration[myCar] = -MAX_ACCELERATION;
-			back[myCar] = true;
-		}
-		else back[myCar] = false;
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+			{
+				acceleration[myCar] = -MAX_ACCELERATION;
+				back[myCar] = true;
+			}
+			else back[myCar] = false;
 
-		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		{
-			if (turn[myCar] < TURN_DEGREES)
-				turn[myCar] += TURN_DEGREES;
-			left[myCar] = true;
-		}
-		else left[myCar] = false;
+			if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+			{
+				if (turn[myCar] < TURN_DEGREES)
+					turn[myCar] += TURN_DEGREES;
+				left[myCar] = true;
+			}
+			else left[myCar] = false;
 
-		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		{
-			if (turn[myCar] > -TURN_DEGREES)
-				turn[myCar] -= TURN_DEGREES;
-			right[myCar] = true;
-		}
-		else right[myCar] = false;
+			if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+			{
+				if (turn[myCar] > -TURN_DEGREES)
+					turn[myCar] -= TURN_DEGREES;
+				right[myCar] = true;
+			}
+			else right[myCar] = false;
 
-		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
-		{
-			brake[myCar] = BRAKE_POWER;
-			down[myCar] = true;
+			if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
+			{
+				brake[myCar] = BRAKE_POWER;
+				down[myCar] = true;
+			}
+			else down[myCar] = false;
 		}
-		else down[myCar] = false;
-
 
 		if (impulseActivated[myCar])
 		{
