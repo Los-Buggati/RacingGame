@@ -452,7 +452,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	float angle1 = quat1.getAngle() * RADTODEG;
 	btVector3 axis1 = quat1.getAxis();
 
-	App->renderer3D->DrawTexture(road4, { -155, 48, -131 }, 80.0f, angle1, vec3(axis1.getX(), axis1.getY(), axis1.getZ()));
+	App->renderer3D->DrawTexture(road4, { -155, 47.4f, -131 }, 80.0f, angle1, vec3(axis1.getX(), axis1.getY(), axis1.getZ()));
 
 	btQuaternion quat2;
 	quat2.setEulerZYX(13 * DEGTORAD, 0 * DEGTORAD, 90 * DEGTORAD);
@@ -460,7 +460,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	float angle2 = quat2.getAngle() * RADTODEG;
 	btVector3 axis2 = quat2.getAxis();
 
-	App->renderer3D->DrawTexture(road5, { -448, 22, 0 }, 140.0f, angle2, vec3(axis2.getX(), axis2.getY(), axis2.getZ()));
+	App->renderer3D->DrawTexture(road5, { -448, 20.4f, 0 }, 140.0f, angle2, vec3(axis2.getX(), axis2.getY(), axis2.getZ()));
 
 	btQuaternion quat3;
 	quat3.setEulerZYX(24 * DEGTORAD, 180 * DEGTORAD, 90 * DEGTORAD);
@@ -468,7 +468,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	float angle3 = quat3.getAngle() * RADTODEG;
 	btVector3 axis3 = quat3.getAxis();
 
-	App->renderer3D->DrawTexture(road6, { 290, 32, 60 }, 140.0f, angle3, vec3(axis3.getX(), axis3.getY(), axis3.getZ()));
+	App->renderer3D->DrawTexture(road6, { 290, 27, 60 }, 140.0f, angle3, vec3(axis3.getX(), axis3.getY(), axis3.getZ()));
 
 	btQuaternion quat4;
 	quat4.setEulerZYX(12 * DEGTORAD, 180 * DEGTORAD, 90 * DEGTORAD);
@@ -482,7 +482,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	App->renderer3D->DrawTexture(road, { 72, 34.6f, 59.0f }, 890.0f, 90, vec3(1, 0, 0));
 
 	//arriba
-	App->renderer3D->DrawTexture(road2, { 152, 64.10f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
+	App->renderer3D->DrawTexture(road2, { 152, 64.0f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
 
 	//App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
 
