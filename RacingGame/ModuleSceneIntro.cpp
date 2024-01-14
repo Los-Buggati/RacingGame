@@ -65,7 +65,7 @@ bool ModuleSceneIntro::Start()
 	coin[4].physbody = coin4Body;
 
 	coin[5] = Cylinder(1.0f, 0.5f);
-	coin[5].SetPos(-499.42f, 4.97f, 206.81f);
+	coin[5].SetPos(-499.42f, 5, 206.81f);
 	coin[5].color = Blue;
 	coin5Body = App->physics->AddBody(coin[5], 0.0);
 	coin5Body->SetAsSensor(true);
@@ -86,7 +86,7 @@ bool ModuleSceneIntro::Start()
 	coin[7].physbody = coin7Body;
 
 	coin[8] = Cylinder(1.0f, 0.5f);
-	coin[8].SetPos(-561.46f, 2.97f, 199.24f);
+	coin[8].SetPos(-561.46f, 5, 199.24f);
 	coin[8].color = Blue;
 	coin8Body = App->physics->AddBody(coin[8], 0.0);
 	coin8Body->SetAsSensor(true);
@@ -426,6 +426,13 @@ update_status ModuleSceneIntro::Update(float dt)
 		if (WinIndex == 1) App->renderer3D->DrawTexture(win1, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
 		if (WinIndex == 2) App->renderer3D->DrawTexture(win2, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
 		if (WinIndex == 3) App->renderer3D->DrawTexture(win3, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
+
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			App->player->Respawn(App->network->clientIndex);
+			lose = false;
+			loseCount = 0;
+		}
 	}
 
 	if (lose)
