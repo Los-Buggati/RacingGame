@@ -441,7 +441,8 @@ update_status ModuleSceneIntro::Update(float dt)
 		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 		{
 			App->player->Respawn(App->network->clientIndex);
-			lose = false;
+			App->player->lobatoPlayed = false;
+			win = false;
 			loseCount = 0;
 		}
 	}
