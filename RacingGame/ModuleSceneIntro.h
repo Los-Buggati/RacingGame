@@ -64,6 +64,8 @@ public:
 	Cylinder coin8;
 	Cylinder coin9;
 
+	Cylinder coin[9];
+
 	PhysBody3D* coin1Body;
 	PhysBody3D* coin2Body;
 	PhysBody3D* coin3Body;
