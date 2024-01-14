@@ -53,6 +53,7 @@ public:
 
 
 	PhysBody3D* sensor_cube;
+	PhysBody3D* sensor_cube2;
 	PhysBody3D* mud;
 
 	Cylinder coin[10];

@@ -23,9 +23,13 @@ bool ModuleSceneIntro::Start()
 	App->camera->LookAt(vec3(0, 0, 15));
 
 	// Create sensor cube (will trigger with car)
-	sensor_cube = App->physics->AddBody(Cube(5, 2, 5), 0.0);
+	sensor_cube = App->physics->AddBody(Cube(30, 5, 25), 0.0);
 	sensor_cube->SetAsSensor(true);
-	sensor_cube->SetPos(0, 1, 100);
+	sensor_cube->SetPos(470, 36, 148);
+
+	sensor_cube2 = App->physics->AddBody(Cube(30, 5, 35), 0.0);
+	sensor_cube2->SetAsSensor(true);
+	sensor_cube2->SetPos(-290, 36, 0);
 
 	coin[1] = Cylinder(1.0f, 0.5f);
 	coin[1].SetPos(16, 39, 302);
@@ -94,8 +98,8 @@ bool ModuleSceneIntro::Start()
 	platform.SetPos(0, 1, 20);
 	platform.color = White;
 	
-	mud=App->physics->AddBody(Cube(50, 6, 30), 0.0);
-	mud->SetPos(0, 1, 30);
+	mud=App->physics->AddBody(Cube(100, 6, 70), 0.0);
+	mud->SetPos(-270, 5, 80);
 	mud->SetAsSensor(true);
 
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, 4), vec3(0, 80, 0), Black);
@@ -309,9 +313,9 @@ bool ModuleSceneIntro::Start()
 
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
-	road = App->renderer3D->LoadTexture("Assets/pistanivelmedio.png");
+	road = App->renderer3D->LoadTexture("Assets/pistanivelmedio2.png");
 	road2 = App->renderer3D->LoadTexture("Assets/arriba.png");
-	road3 = App->renderer3D->LoadTexture("Assets/imagenotaa2.png");
+	road3 = App->renderer3D->LoadTexture("Assets/imagenotaa3.png");
 	road4 = App->renderer3D->LoadTexture("Assets/mandanga.png");
 	road5 = App->renderer3D->LoadTexture("Assets/rampa2.png");
 	arrow = App->renderer3D->LoadTexture("Assets/arrow.png");
