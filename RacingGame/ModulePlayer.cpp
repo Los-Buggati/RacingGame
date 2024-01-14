@@ -193,8 +193,6 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	{
 		if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar])
 		{
-			// Modify the friction here based on your requirements
-			// For example, you can set a higher friction when colliding with mud
 			vehicle[currentCar]->vehicle->updateFriction(-0.015f); // Adjust the value as needed
 		}
 	}
@@ -289,13 +287,13 @@ void ModulePlayer::CreateCar(int carIndex)
 
 	vehicle[carIndex] = App->physics->AddVehicle(car);
 	vehicle[carIndex]->collision_listeners.add(this); // Add this module as listener to callbacks from vehicle
-	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+	vehicle[carIndex]->SetPos(InitPos.x, InitPos.y, carIndex * InitPos.z);
 	vehicle[carIndex]->Orient(3.14/2);
 }
 
 void ModulePlayer:: Respawn(int carIndex)
 {
-	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+	vehicle[carIndex]->SetPos(InitPos.x, InitPos.y, carIndex * InitPos.z);
 	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
 	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
 	vehicle[carIndex]->Orient(3.14 / 2);
