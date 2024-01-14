@@ -37,7 +37,7 @@ bool ModuleSceneIntro::Start()
 	sensor_cube2->SetPos(-290, 36, 0);
 
 	coin[1] = Cylinder(1.0f, 0.5f);
-	coin[1].SetPos(16, 36, 302);
+	coin[1].SetPos(16, 38, 302);
 	coin[1].color = Blue;
 	coin1Body = App->physics->AddBody(coin[1], 0.0);
 	coin1Body->SetAsSensor(true);
@@ -72,14 +72,14 @@ bool ModuleSceneIntro::Start()
 	coin[5].physbody = coin5Body;
 
 	coin[6] = Cylinder(1.0f, 0.5f);
-	coin[6].SetPos(-10.48f, 63.94f, 125.51f);
+	coin[6].SetPos(-10.48f, 65, 125.51f);
 	coin[6].color = Blue;
 	coin6Body = App->physics->AddBody(coin[6], 0.0);
 	coin6Body->SetAsSensor(true);
 	coin[6].physbody = coin6Body;
 
 	coin[7] = Cylinder(1.0f, 0.5f);
-	coin[7].SetPos(74.93f, 63.94f, 248.73f);
+	coin[7].SetPos(74.93f, 65, 248.73f);
 	coin[7].color = Blue;
 	coin7Body = App->physics->AddBody(coin[7], 0.0);
 	coin7Body->SetAsSensor(true);
