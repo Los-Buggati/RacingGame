@@ -195,7 +195,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	{
 		if ((body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) && (body1==App->scene_intro->mud || body2==App->scene_intro->mud))
 		{
-			vehicle[currentCar]->vehicle->updateFriction(-0.015f); // Adjust the value as needed
+			vehicle[currentCar]->vehicle->updateFriction(-0.03f); // Adjust the value as needed
 		}
 	}
 }
