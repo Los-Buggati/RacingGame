@@ -54,17 +54,8 @@ public:
 
 	PhysBody3D* sensor_cube;
 	PhysBody3D* mud;
-	Cylinder coin1;
-	Cylinder coin2;
-	Cylinder coin3;
-	Cylinder coin4;
-	Cylinder coin5;
-	Cylinder coin6;
-	Cylinder coin7;
-	Cylinder coin8;
-	Cylinder coin9;
 
-	Cylinder coin[9];
+	Cylinder coin[10];
 
 	PhysBody3D* coin1Body;
 	PhysBody3D* coin2Body;
