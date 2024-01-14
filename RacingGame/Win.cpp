@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleNetwork.h"
+#include "ModuleAudio.h"
 
 
 Win::Win(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -24,9 +25,9 @@ bool Win::Start()
 	Win3 = App->textures->Load("Assets/Win3.png");
 	
 	//load music
-
+	
 	return ret;
-}
+}	
 
 // Unload assets
 bool Win::CleanUp()
@@ -56,10 +57,18 @@ update_status Win::Update(float dt)
 		wintimer = 0;
 	}
 	
-	/*if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-	{
-		App->
-	}*/
+	////cambio de escena
+	//if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+	//{
+	//	App->renderer3D->Disable();//s'ha de fer cleanup
+	//	App->scene_intro->Disable();
+	//	App->player->Disable();
+	//	App->camera->Disable();
+	//	App->renderer->Enable();
+	//	App->menu->Enable();
+	//	App->win->Disable();
+	//}
+
 
 	int imageWidth = 3840;
 	int imageHeight = 2160;
@@ -73,6 +82,7 @@ update_status Win::Update(float dt)
 	if (WinIndex == 1) App->renderer->Blit(Win1, xPos, yPos, NULL);
 	else if (WinIndex == 2) App->renderer->Blit(Win2, xPos, yPos, NULL);
 	else if (WinIndex == 3) App->renderer->Blit(Win3, xPos, yPos, NULL);
+
 
 	return UPDATE_CONTINUE;
 }

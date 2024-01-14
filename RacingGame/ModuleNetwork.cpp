@@ -235,3 +235,4 @@ void ModuleNetwork::OnGameStart()
 	gameStarted = true;
 	canSend = true;
 }
+

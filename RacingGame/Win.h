@@ -21,7 +21,7 @@ public:
 
 	float wintimer = 0.0f;
 
-
+	uint torrente;
 
 };
 
