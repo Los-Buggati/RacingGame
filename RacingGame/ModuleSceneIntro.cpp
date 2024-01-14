@@ -119,7 +119,7 @@ bool ModuleSceneIntro::Start()
 
 	constraintPlatform = Cube(26, 0.5f, 40);
 	constraintPlatform.SetPos(150, 68, 80);
-	constraintPlatform.SetRotation(-10, vec3(1, 0, 0));
+	constraintPlatform.SetRotation(10, vec3(1, 0, 0));
 	constraintPlatformBody = App->physics->AddBody(constraintPlatform, 0.1f);
 	constraintPlatform.physbody = constraintPlatformBody;
 
@@ -130,11 +130,11 @@ bool ModuleSceneIntro::Start()
 
 	btHingeConstraint* hinge = App->physics->AddConstraintHinge(*constraintPlatformBody, *constraintCylinderBody, vec3(0, 0, 0), vec3(0, 0, 0), vec3(1, 0, 0), vec3(1, 0, 0), true);
 
-	CreateCube(vec3(50, 1, 50), vec3(5, 1, 5), vec3(0, 0, 0), White);
+	//CreateCube(vec3(50, 1, 50), vec3(5, 1, 5), vec3(0, 0, 0), White);
 
 	CreateCube(vec3(29.30f, 1.44f, 28.84f), vec3(17.34f, 35.83f, 299.86f), vec3(-0.00f, 0.00f, 0.22f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(81.28f, 1.44f, 25.56f), vec3(-153.80f, 46.16f, -133.28f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(146.39f, 1.44f, 26.31f), vec3(292.86f, 34.21f, 59.99f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(146.39f, 1.44f, 26.31f), vec3(292.86f, 31.69f, 59.99f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(155.00f, 1.44f, 26.39f), vec3(-454.18f, 17.92f, -0.99f), vec3(-0.00f, 0.00f, 0.23f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(57.20f, 1.94f, 26.41f), vec3(56.62f, 33.51f, 2.83f), vec3(0.00f, -0.16f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(57.20f, 1.94f, 25.39f), vec3(91.44f, 33.51f, 9.42f), vec3(0.00f, -0.20f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
@@ -155,7 +155,7 @@ bool ModuleSceneIntro::Start()
 	CreateCube(vec3(123.90f, 1.94f, 26.73f), vec3(153.10f, 33.51f, 299.47f), vec3(0.00f, -0.00f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(153.52f, 1.94f, 27.36f), vec3(284.25f, 33.51f, 378.63f), vec3(0.00f, -1.06f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(113.06f, 1.94f, 27.20f), vec3(414.65f, 33.51f, 405.02f), vec3(0.00f, 0.89f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(436.20f, 1.94f, 27.47f), vec3(9.94f, 1.97f, 59.17f), vec3(-0.00f, 0.00f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(448.08f, 1.94f, 27.47f), vec3(9.94f, 1.97f, 59.17f), vec3(-0.00f, 0.00f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(430.10f, 1.94f, 25.48f), vec3(-164.97f, 33.51f, -0.47f), vec3(0.00f, -0.00f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(127.14f, 1.94f, 29.08f), vec3(148.83f, 62.94f, 69.85f), vec3(0.00f, -1.56f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(116.78f, 1.94f, 27.44f), vec3(465.63f, 33.51f, 32.92f), vec3(0.00f, 1.57f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
@@ -310,7 +310,6 @@ bool ModuleSceneIntro::Start()
 
 
 
-
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
 	road = App->renderer3D->LoadTexture("Assets/pistanivelmedio2.png");
@@ -323,6 +322,9 @@ bool ModuleSceneIntro::Start()
 	win2 = App->renderer3D->LoadTexture("Assets/win2.png");
 	win3 = App->renderer3D->LoadTexture("Assets/win3.png");
 	lose1 = App->renderer3D->LoadTexture("Assets/lose1.png");
+
+	startOne = App->audio->LoadFx("Assets/startone.wav");
+	startTwo = App->audio->LoadFx("Assets/starttwo.wav");
 
 	return ret;
 }
@@ -426,7 +428,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	//App->renderer3D->DrawTexture(win1, { -500, 2.19f, 122.0f }, 50, 0, vec3(0, 0, 0));
 
 	//suelo
-	App->renderer3D->DrawTexture(road3, { -202, 4.0f, 104 }, 985.0f, 90, vec3(1, 0, 0));
+	App->renderer3D->DrawTexture(road3, { -202, 3.1f, 104 }, 985.0f, 90, vec3(1, 0, 0));
 
 
 	btQuaternion quat1;
@@ -446,10 +448,10 @@ update_status ModuleSceneIntro::Update(float dt)
 	App->renderer3D->DrawTexture(road5, { -448, 22, 0 }, 140.0f, angle2, vec3(axis2.getX(), axis2.getY(), axis2.getZ()));
 
 	//central
-	App->renderer3D->DrawTexture(road, { 72, 35.0f, 59.0f }, 890.0f, 90, vec3(1, 0, 0));
+	App->renderer3D->DrawTexture(road, { 72, 34.6f, 59.0f }, 890.0f, 90, vec3(1, 0, 0));
 
 	//arriba
-	App->renderer3D->DrawTexture(road2, { 152, 64.50f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
+	App->renderer3D->DrawTexture(road2, { 152, 64.10f, 55.0f }, 550.0f, 90, vec3(1, 0, 0));
 
 	App->renderer3D->DrawTexture(arrow, { 0, 0.1, 100 }, 5.0f, 90, vec3(1, 0, 0));
 
@@ -478,14 +480,16 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 	if (lightIndex < 6)lightTimer++;
-	if (lightTimer > 100 && lightIndex < 5)
+	if (lightTimer > 85 && lightIndex < 5)
 	{
+		App->audio->PlayFx(startOne);
 		lightTimer = 0;
 		light[lightIndex].color = Red;
 		lightIndex++;
 	}
-	else if (lightTimer > 100 && lightIndex == 5)
+	else if (lightTimer > 85 && lightIndex == 5)
 	{
+		App->audio->PlayFx(startTwo);
 		for (int i = 0; i < 5; i++)
 		{
 			light[i].color = Green;
