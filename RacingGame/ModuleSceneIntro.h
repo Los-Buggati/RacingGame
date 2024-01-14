@@ -73,6 +73,7 @@ public:
 	PhysBody3D* physBody;
 
 	uint logo, logo2, road, road2, road3, road4, road5, arrow;
+	uint win1, win2, win3, lose1;
 
 	vector<Cube> cubes;
 	vector<Cylinder> cylinders;
@@ -88,4 +89,10 @@ public:
 
 	PhysBody3D* constraintPlatformBody = nullptr;
 	PhysBody3D* constraintCylinderBody = nullptr;
+
+	float wintimer = 0.0f;
+	int WinIndex = 0;
+	bool win = false;
+	bool lose = false;
+	int loseCount = 0;
 };

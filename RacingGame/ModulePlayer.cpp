@@ -36,8 +36,10 @@ update_status ModulePlayer::Update(float dt)
 	
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()<= Vehicle_Fall_Dist)
 	{
+		App->scene_intro->loseCount++;
 		Respawn(myCar);
 	}
+
 	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
 	{
 		DarVuelta(myCar);
@@ -175,7 +177,6 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body1 == App->scene_intro->sensor_cube || body2 == App->scene_intro->sensor_cube)
@@ -297,6 +298,7 @@ void ModulePlayer:: Respawn(int carIndex)
 	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
 	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
 	vehicle[carIndex]->Orient(3.14 / 2);
+	App->scene_intro->lightIndex = 0;
 }
 
 void ModulePlayer::DarVuelta(int carIndex)

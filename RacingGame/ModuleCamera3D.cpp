@@ -63,51 +63,60 @@ update_status ModuleCamera3D::Update(float dt)
 
 	// Mouse motion ----------------
 
-	if(App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
+	if (App->scene_intro->win || App->scene_intro->lose)
 	{
-		int dx = -App->input->GetMouseXMotion();
-		int dy = -App->input->GetMouseYMotion();
-
-		float Sensitivity = 0.25f;
-
-		Position -= Reference;
-
-		if(dx != 0)
-		{
-			float DeltaX = (float)dx * Sensitivity;
-
-			X = rotate(X, DeltaX, vec3(0.0f, 1.0f, 0.0f));
-			Y = rotate(Y, DeltaX, vec3(0.0f, 1.0f, 0.0f));
-			Z = rotate(Z, DeltaX, vec3(0.0f, 1.0f, 0.0f));
-		}
-
-		if(dy != 0)
-		{
-			float DeltaY = (float)dy * Sensitivity;
-
-			Y = rotate(Y, DeltaY, X);
-			Z = rotate(Z, DeltaY, X);
-
-			if(Y.y < 0.0f)
-			{
-				Z = vec3(0.0f, Z.y > 0.0f ? 1.0f : -1.0f, 0.0f);
-				Y = cross(Z, X);
-			}
-		}
-
-		Position = Reference + Z * length(Position);
+		LookAt(vec3(0, -1000, 0));
+		Position = vec3(0, -1000, -200);
 	}
 	else
 	{
-		const btVector3& chassisPos = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getOrigin();
-		vec3 carPos(chassisPos.getX(), chassisPos.getY(), chassisPos.getZ());
+		if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
+		{
+			int dx = -App->input->GetMouseXMotion();
+			int dy = -App->input->GetMouseYMotion();
 
-		const btVector3& rearOffset3 = App->player->vehicle[App->network->clientIndex]->vehicle->getForwardVector();
-		vec3 rearOffset(rearOffset3.getX(), rearOffset3.getY(), rearOffset3.getZ());
+			float Sensitivity = 0.25f;
 
-		Position = carPos - rearOffset * 10.0f + vec3(0.0f, 5.0f, 0.0f);
-		LookAt(carPos);
+			Position -= Reference;
+
+			if (dx != 0)
+			{
+				float DeltaX = (float)dx * Sensitivity;
+
+				X = rotate(X, DeltaX, vec3(0.0f, 1.0f, 0.0f));
+				Y = rotate(Y, DeltaX, vec3(0.0f, 1.0f, 0.0f));
+				Z = rotate(Z, DeltaX, vec3(0.0f, 1.0f, 0.0f));
+			}
+
+			if (dy != 0)
+			{
+				float DeltaY = (float)dy * Sensitivity;
+
+				Y = rotate(Y, DeltaY, X);
+				Z = rotate(Z, DeltaY, X);
+
+				if (Y.y < 0.0f)
+				{
+					Z = vec3(0.0f, Z.y > 0.0f ? 1.0f : -1.0f, 0.0f);
+					Y = cross(Z, X);
+				}
+			}
+
+			Position = Reference + Z * length(Position);
+		}
+		else
+		{
+			const btVector3& chassisPos = App->player->vehicle[App->network->clientIndex]->vehicle->getChassisWorldTransform().getOrigin();
+			vec3 carPos(chassisPos.getX(), chassisPos.getY(), chassisPos.getZ());
+
+			const btVector3& rearOffset3 = App->player->vehicle[App->network->clientIndex]->vehicle->getForwardVector();
+			vec3 rearOffset(rearOffset3.getX(), rearOffset3.getY(), rearOffset3.getZ());
+
+			Position = carPos - rearOffset * 10.0f + vec3(0.0f, 5.0f, 0.0f);
+			LookAt(carPos);
+		}
 	}
+	
 
 	// Recalculate matrix -------------
 	CalculateViewMatrix();
