@@ -60,7 +60,6 @@ update_status ModuleCamera3D::Update(float dt)
 
 	Position += newPos;
 	Reference += newPos;
-
 	// Mouse motion ----------------
 
 	if (App->scene_intro->win || App->scene_intro->lose)

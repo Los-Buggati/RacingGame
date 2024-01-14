@@ -179,9 +179,10 @@ update_status ModulePlayer::Update(float dt)
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	if (body1 == App->scene_intro->sensor_cube || body2 == App->scene_intro->sensor_cube)
+	
+	for (int currentCar = 0; currentCar < carCount; currentCar++)
 	{
-		for (int currentCar = 0; currentCar < carCount; currentCar++)
+		if ((body1 == App->scene_intro->sensor_cube || body2 == App->scene_intro->sensor_cube) || (body1 == App->scene_intro->sensor_cube2 || body2 == App->scene_intro->sensor_cube2) && (body1 == vehicle[currentCar] || body2 == vehicle[currentCar]))
 		{
 			if (currentCar != myCar)
 			{
@@ -190,9 +191,10 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 			else impulseActivated[myCar] = true;
 		}
 	}
+
 	for (int currentCar = 0; currentCar < carCount; currentCar++)
 	{
-		if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar])
+		if ((body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) && (body1==App->scene_intro->mud || body2==App->scene_intro->mud))
 		{
 			vehicle[currentCar]->vehicle->updateFriction(-0.015f); // Adjust the value as needed
 		}
