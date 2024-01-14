@@ -37,28 +37,28 @@ bool ModuleSceneIntro::Start()
 	sensor_cube2->SetPos(-290, 36, 0);
 
 	coin[1] = Cylinder(1.0f, 0.5f);
-	coin[1].SetPos(16, 37, 302);
+	coin[1].SetPos(16, 36, 302);
 	coin[1].color = Blue;
 	coin1Body = App->physics->AddBody(coin[1], 0.0);
 	coin1Body->SetAsSensor(true);
 	coin[1].physbody = coin1Body;
 	
 	coin[2] = Cylinder(1.0f, 0.5f);
-	coin[2].SetPos(5, 37, 0);
+	coin[2].SetPos(5, 36, 0);
 	coin[2].color = Blue;
 	coin2Body = App->physics->AddBody(coin[2], 0.0);
 	coin2Body->SetAsSensor(true);
 	coin[2].physbody = coin2Body;
 
 	coin[3] = Cylinder(1.0f, 0.5f);
-	coin[3].SetPos(-53.36f, 37.51f, 176.13f);
+	coin[3].SetPos(-53.36f, 36, 176.13f);
 	coin[3].color = Blue;
 	coin3Body = App->physics->AddBody(coin[3], 0.0);
 	coin3Body->SetAsSensor(true);
 	coin[3].physbody = coin3Body;
 	
 	coin[4] = Cylinder(1.0f, 0.5f);
-	coin[4].SetPos(167.51f, 35.29f, 301.84f);
+	coin[4].SetPos(167.51f, 36, 301.84f);
 	coin[4].color = Blue;
 	coin4Body = App->physics->AddBody(coin[4], 0.0);
 	coin4Body->SetAsSensor(true);
@@ -93,7 +93,7 @@ bool ModuleSceneIntro::Start()
 	coin[8].physbody = coin8Body;
 
 	coin[9] = Cylinder(1.0f, 0.5f);
-	coin[9].SetPos(137.90f, 33.51f, 89.16f);
+	coin[9].SetPos(137.90f, 36, 89.16f);
 	coin[9].color = Blue;
 	coin9Body = App->physics->AddBody(coin[9], 0.0);
 	coin9Body->SetAsSensor(true);
@@ -511,14 +511,14 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 	if (lightIndex < 6)lightTimer++;
-	if (lightTimer > 250 && lightIndex < 5)
+	if (lightTimer > 70 && lightIndex < 5)
 	{
 		App->audio->PlayFx(startOne);
 		lightTimer = 0;
 		light[lightIndex].color = Red;
 		lightIndex++;
 	}
-	else if (lightTimer > 250 && lightIndex == 5)
+	else if (lightTimer > 70 && lightIndex == 5)
 	{
 		App->audio->PlayFx(startTwo);
 		for (int i = 0; i < 5; i++)
