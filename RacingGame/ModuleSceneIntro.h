@@ -98,4 +98,5 @@ public:
 	bool win = false;
 	bool lose = false;
 	int loseCount = 0;
+	int coinCounter = 0;
 };

@@ -145,7 +145,7 @@ update_status ModulePlayer::Update(float dt)
 		vehicle[myCar]->Render();
 
 		char title[80];
-		sprintf_s(title, "%.1f Km/h", vehicle[myCar]->GetKmh());
+		sprintf_s(title, "%.1f Km/h | Bugatti Coins: %d", vehicle[myCar]->GetKmh(), App->scene_intro->coinCounter);
 		App->window->SetTitle(title);
 
 		//change car mass
@@ -196,7 +196,20 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	{
 		if ((body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) && (body1==App->scene_intro->mud || body2==App->scene_intro->mud))
 		{
-			vehicle[currentCar]->vehicle->updateFriction(-0.03f); // Adjust the value as needed
+			vehicle[currentCar]->vehicle->updateFriction(-0.03f);
+		}
+	}
+
+	for (int currentCar = 0; currentCar < carCount; currentCar++)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			if ((body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) && (body1 == App->scene_intro->coin[i].physbody || body2 == App->scene_intro->coin[i].physbody))
+			{
+				App->scene_intro->coinCounter++;
+				App->scene_intro->coin[i].physbody->SetPos(0, 1000, 0);
+				App->scene_intro->coin[i].SetPos(0, 1000, 0);
+			}
 		}
 	}
 }
