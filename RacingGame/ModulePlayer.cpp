@@ -193,8 +193,6 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	{
 		if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar])
 		{
-			// Modify the friction here based on your requirements
-			// For example, you can set a higher friction when colliding with mud
 			vehicle[currentCar]->vehicle->updateFriction(-0.015f); // Adjust the value as needed
 		}
 	}
