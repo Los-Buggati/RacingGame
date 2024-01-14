@@ -94,9 +94,9 @@ bool ModuleSceneIntro::Start()
 	coin9Body->SetAsSensor(true);
 	coin[9].physbody = coin9Body;
 
-	platform = Cube(50, 1, 30);
-	platform.SetPos(0, 1, 20);
-	platform.color = White;
+	//platform = Cube(50, 1, 30);
+	//platform.SetPos(0, 1, 20);
+	//platform.color = White;
 	
 	mud=App->physics->AddBody(Cube(100, 6, 70), 0.0);
 	mud->SetPos(-270, 5, 80);
@@ -134,8 +134,8 @@ bool ModuleSceneIntro::Start()
 
 	CreateCube(vec3(29.30f, 1.44f, 28.84f), vec3(17.34f, 35.83f, 299.86f), vec3(-0.00f, 0.00f, 0.22f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(81.28f, 1.44f, 25.56f), vec3(-153.80f, 46.16f, -133.28f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(146.39f, 1.44f, 26.31f), vec3(293.65f, 35.82f, 59.99f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(155.00f, 1.44f, 26.39f), vec3(-454.18f, 17.92f, -2.69f), vec3(-0.00f, 0.00f, 0.23f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(146.39f, 1.44f, 26.31f), vec3(292.86f, 34.21f, 59.99f), vec3(-0.00f, 0.00f, 0.42f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(155.00f, 1.44f, 26.39f), vec3(-454.18f, 17.92f, -0.99f), vec3(-0.00f, 0.00f, 0.23f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(57.20f, 1.94f, 26.41f), vec3(56.62f, 33.51f, 2.83f), vec3(0.00f, -0.16f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(57.20f, 1.94f, 25.39f), vec3(91.44f, 33.51f, 9.42f), vec3(0.00f, -0.20f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(34.27f, 1.94f, 23.65f), vec3(127.10f, 33.51f, 23.03f), vec3(0.00f, -0.63f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
@@ -159,7 +159,6 @@ bool ModuleSceneIntro::Start()
 	CreateCube(vec3(430.10f, 1.94f, 25.48f), vec3(-164.97f, 33.51f, -0.47f), vec3(0.00f, -0.00f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(127.14f, 1.94f, 29.08f), vec3(148.83f, 62.94f, 69.85f), vec3(0.00f, -1.56f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(116.78f, 1.94f, 27.44f), vec3(465.63f, 33.51f, 32.92f), vec3(0.00f, 1.57f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(0.00f, 0.00f, 0.00f), vec3(-86.75f, 90.83f, 57.41f), vec3(-0.00f, 0.00f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(34.60f, 1.94f, 26.64f), vec3(143.68f, 33.51f, 40.62f), vec3(0.00f, -1.16f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(34.60f, 1.94f, 26.64f), vec3(144.88f, 33.51f, 78.32f), vec3(-0.00f, 1.04f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(30.19f, 1.94f, 25.68f), vec3(103.60f, 33.51f, 106.42f), vec3(-0.00f, 0.33f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
@@ -301,13 +300,14 @@ bool ModuleSceneIntro::Start()
 	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-681.17f, 1.97f, 88.38f), vec3(0.00f, -1.44f, 0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-681.54f, 1.97f, 69.05f), vec3(-0.00f, 1.47f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
 	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-676.98f, 1.97f, 47.52f), vec3(-0.00f, 1.28f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-670.77f, 1.97f, 32.38f), vec3(-0.00f, 1.13f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-657.82f, 1.97f, 16.87f), vec3(-0.00f, 0.76f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-642.13f, 1.97f, 5.92f), vec3(-0.00f, 0.53f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-630.45f, 1.97f, 1.73f), vec3(-0.00f, 0.32f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-616.04f, 1.97f, -2.29f), vec3(-0.00f, 0.25f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-599.08f, 1.97f, -3.75f), vec3(-0.00f, 0.08f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
-	CreateCube(vec3(103.22f, 1.94f, 27.47f), vec3(-566.24f, 1.97f, -2.65f), vec3(-0.00f, -0.01f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-670.27f, 1.97f, 32.54f), vec3(-0.00f, 1.13f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-657.82f, 1.97f, 17.04f), vec3(-0.00f, 0.76f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-642.13f, 1.97f, 7.10f), vec3(-0.00f, 0.53f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-630.45f, 1.97f, 2.74f), vec3(-0.00f, 0.32f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-616.21f, 1.97f, -0.77f), vec3(-0.00f, 0.25f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(25.69f, 1.94f, 27.47f), vec3(-600.42f, 1.97f, -1.90f), vec3(-0.00f, 0.08f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+	CreateCube(vec3(103.22f, 1.94f, 27.47f), vec3(-566.24f, 1.97f, -1.67f), vec3(-0.00f, -0.01f, -0.00f), Color(1.00f, 1.00f, 1.00f, 0.0f));
+
 
 
 
@@ -319,6 +319,10 @@ bool ModuleSceneIntro::Start()
 	road4 = App->renderer3D->LoadTexture("Assets/mandanga.png");
 	road5 = App->renderer3D->LoadTexture("Assets/rampa2.png");
 	arrow = App->renderer3D->LoadTexture("Assets/arrow.png");
+	win1 = App->renderer3D->LoadTexture("Assets/win1.png");
+	win2 = App->renderer3D->LoadTexture("Assets/win2.png");
+	win3 = App->renderer3D->LoadTexture("Assets/win3.png");
+	lose1 = App->renderer3D->LoadTexture("Assets/lose1.png");
 
 	return ret;
 }
@@ -334,10 +338,10 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-	Plane p(0, 1, 0, 0);
-	p.axis = true;
-	p.Render();
-	p.wire = false;
+	//Plane p(0, 1, 0, 0);
+	//p.axis = true;
+	//p.Render();
+	//p.wire = false;
 
 	angle++;
 	btQuaternion rotationQuaternion = btQuaternion(btVector3(0, 1, 0), angle * DEGTORAD);
@@ -379,9 +383,47 @@ update_status ModuleSceneIntro::Update(float dt)
 		App->renderer3D->DrawTexture(logo2, { logoPosXOtherSide, logoPosY, logoPosZOtherSide }, 1.0f, logoAngleOtherSide, vec3(0, 1, 0));
 	}
 
-	//App->renderer3D->DrawTexture(road, { 0, 1.6f, 10.0f }, 50.0f, 0, vec3(0, 0, 0));
+	if (loseCount == 3)
+	{
+		lose = true;
+	}
 
-	//App->renderer3D->DrawTexture(road, { -500, 2.19f, 122.0f }, 530.0f, 90, vec3(1, 0, 0));
+	if (win)
+	{
+		wintimer++;
+		float time = 0.5f;
+
+		if (wintimer < 50 * time) {
+			WinIndex = 1;
+		}
+		else if (wintimer > 50 * time && wintimer < 100 * time) {
+			WinIndex = 2;
+		}
+		else if (wintimer > 100 * time && wintimer < 150 * time) {
+			WinIndex = 3;
+		}
+		if (wintimer == 150 * time) {
+			wintimer = 0;
+		}
+
+		if (WinIndex == 1) App->renderer3D->DrawTexture(win1, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
+		if (WinIndex == 2) App->renderer3D->DrawTexture(win2, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
+		if (WinIndex == 3) App->renderer3D->DrawTexture(win3, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
+	}
+
+	if (lose)
+	{
+		loseCount = 5;
+		App->renderer3D->DrawTexture(lose1, { 0, -1000, 2 }, 300, 0, vec3(0, 0, 0));
+		if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
+		{
+			App->player->Respawn(App->network->clientIndex);
+			lose = false;
+			loseCount = 0;
+		}
+	}
+
+	//App->renderer3D->DrawTexture(win1, { -500, 2.19f, 122.0f }, 50, 0, vec3(0, 0, 0));
 
 	//suelo
 	App->renderer3D->DrawTexture(road3, { -202, 4.0f, 104 }, 985.0f, 90, vec3(1, 0, 0));
@@ -428,6 +470,13 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	App->renderer3D->DrawTexture(logo, { logoPos.getX(), logoPos.getY(), logoPos.getZ() }, 0.7f, carAngle, vec3(0, 1, 0));*/
 
+	if (lightIndex == 0)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			light[i].color = Color(0.1f, 0.1f, 0.1f);
+		}
+	}
 	if (lightIndex < 6)lightTimer++;
 	if (lightTimer > 100 && lightIndex < 5)
 	{
@@ -435,7 +484,7 @@ update_status ModuleSceneIntro::Update(float dt)
 		light[lightIndex].color = Red;
 		lightIndex++;
 	}
-	else if (lightTimer > 150 && lightIndex == 5)
+	else if (lightTimer > 100 && lightIndex == 5)
 	{
 		for (int i = 0; i < 5; i++)
 		{
