@@ -76,6 +76,8 @@ public:
 	uint logo, logo2, road, road2, road3, road4, road5, arrow;
 	uint win1, win2, win3, lose1;
 
+	uint startOne, startTwo;
+
 	vector<Cube> cubes;
 	vector<Cylinder> cylinders;
 
@@ -99,4 +101,5 @@ public:
 	bool lose = false;
 	bool fary=false;
 	int loseCount = 0;
+	int coinCounter = 0;
 };
