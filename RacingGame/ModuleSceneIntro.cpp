@@ -108,19 +108,19 @@ bool ModuleSceneIntro::Start()
 	mud->SetAsSensor(true);
 
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, 4), vec3(0, 80, 0), Black);
-	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, 4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
+	light[0] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 39, 4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, 2), vec3(0, 80, 0), Black);
-	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, 2), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
+	light[1] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 39, 2), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, 0), vec3(0, 80, 0), Black);
-	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, 0), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
+	light[2] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 39, 0), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, -2), vec3(0, 80, 0), Black);
-	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, -2), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
+	light[3] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 39, -2), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
 	CreateCube(vec3(2, 5, 1), vec3(15, 40, -4), vec3(0, 80, 0), Black);
-	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 40, -4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
+	light[4] = CreateCylinder(vec2(0.5f, 0.2f), vec3(14, 39, -4), vec3(0, 10, 0), Color(0.1f, 0.1f, 0.1f));
 
 	constraintPlatform = Cube(26, 0.5f, 40);
 	constraintPlatform.SetPos(150, 68, 80);
@@ -511,14 +511,14 @@ update_status ModuleSceneIntro::Update(float dt)
 		}
 	}
 	if (lightIndex < 6)lightTimer++;
-	if (lightTimer > 85 && lightIndex < 5)
+	if (lightTimer > 250 && lightIndex < 5)
 	{
 		App->audio->PlayFx(startOne);
 		lightTimer = 0;
 		light[lightIndex].color = Red;
 		lightIndex++;
 	}
-	else if (lightTimer > 85 && lightIndex == 5)
+	else if (lightTimer > 250 && lightIndex == 5)
 	{
 		App->audio->PlayFx(startTwo);
 		for (int i = 0; i < 5; i++)

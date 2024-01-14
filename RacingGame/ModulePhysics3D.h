@@ -41,8 +41,6 @@ public:
 
 private:
 
-	bool debug;
-
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;
 	btBroadphaseInterface*				broad_phase;
@@ -59,6 +57,8 @@ private:
 	int gravedadX;
 	int gravedadY;
 	int gravedadZ;
+public:
+	bool debug;
 };
 
 class DebugDrawer : public btIDebugDraw

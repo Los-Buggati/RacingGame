@@ -51,9 +51,9 @@ update_status ModuleMenu::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
-		if (menuIndex == 1) App->network->optionsIndex = 1;
-		else if (menuIndex == 2) App->network->optionsIndex = 2;
-		else if (menuIndex == 3) App->network->optionsIndex = 3;
+		if (menuIndex == 1) App->network->optionsIndex = 3;
+		else if (menuIndex == 2) App->network->optionsIndex = 1;
+		else if (menuIndex == 3) App->network->optionsIndex = 2;
 		else if (menuIndex == 4) return UPDATE_STOP;
 	}
 

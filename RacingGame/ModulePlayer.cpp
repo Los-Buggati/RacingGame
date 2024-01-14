@@ -18,7 +18,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	torrenteAcelera = App->audio->LoadFx("Assets/TorrenteAcelera.wav");
+	torrenteAcelera = App->audio->LoadFx("Assets/acelera.wav");
 	torrenteCaida = App->audio->LoadFx("Assets/CaidaTorrente.wav");
 	return true;
 }
@@ -38,7 +38,7 @@ update_status ModulePlayer::Update(float dt)
 
 	if (acelera && vehicle[myCar]->GetKmh()<100 && vehicle[myCar]->GetKmh()>=60)
 	{
-		//App->audio->PlayFx(torrenteAcelera);
+		App->audio->PlayFx(torrenteAcelera);
 		acelera = false;
 	}
 	
@@ -331,6 +331,7 @@ void ModulePlayer:: Respawn(int carIndex)
 	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
 	vehicle[carIndex]->Orient(3.14 / 2);
 	App->scene_intro->lightIndex = 0;
+	App->physics->debug = false;
 }
 
 void ModulePlayer::DarVuelta(int carIndex)
