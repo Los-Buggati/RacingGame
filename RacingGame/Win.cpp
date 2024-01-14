@@ -22,6 +22,8 @@ bool Win::Start()
 	Win1 = App->textures->Load("Assets/Win1.png");
 	Win2 = App->textures->Load("Assets/Win2.png");
 	Win3 = App->textures->Load("Assets/Win3.png");
+	
+	//load music
 
 	return ret;
 }
@@ -39,7 +41,7 @@ update_status Win::Update(float dt)
 {
 
 	wintimer++;
-	int time = 15;
+	int time = 10;
 
 	if (wintimer < 50*time) {
 		WinIndex = 1;
