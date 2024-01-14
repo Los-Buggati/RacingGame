@@ -23,6 +23,7 @@ bool Lose::Start()
 
 	//load music
 
+
 	return ret;
 }
 

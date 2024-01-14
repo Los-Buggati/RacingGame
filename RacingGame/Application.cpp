@@ -11,11 +11,11 @@ Application::Application()
 	physics = new ModulePhysics3D(this);
 	player = new ModulePlayer(this, false);
 	network = new ModuleNetwork(this);
-	menu = new ModuleMenu(this, false);
+	menu = new ModuleMenu(this, true);
 	renderer = new ModuleRender(this);
 	textures = new ModuleTextures(this);
 	win = new Win(this, false);
-	lose = new Lose(this, true);
+	lose = new Lose(this, false);
 	
 
 	// The order of calls is very important!
