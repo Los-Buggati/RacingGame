@@ -18,6 +18,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
+	torrenteAcelera = App->audio->LoadFx("Assets/TorrenteAcelera.wav");
+	torrenteCaida = App->audio->LoadFx("Assets/CaidaTorrente.wav");
 	return true;
 }
 
@@ -33,10 +35,18 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update(float dt)
 {
 	myCar = App->network->clientIndex;
+
+	if (acelera && vehicle[myCar]->GetKmh()<100 && vehicle[myCar]->GetKmh()>=60)
+	{
+		//App->audio->PlayFx(torrenteAcelera);
+		acelera = false;
+	}
+	
 	
 	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()<= Vehicle_Fall_Dist)
 	{
 		App->scene_intro->loseCount++;
+		App->audio->PlayFx(torrenteCaida);
 		Respawn(myCar);
 	}
 
@@ -189,6 +199,11 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 				if (body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) impulseActivated[currentCar] = true;
 			}
 			else impulseActivated[myCar] = true;
+			if (!faryPlayed)
+			{
+				App->scene_intro->fary = true;
+				faryPlayed = true;
+			}
 		}
 	}
 

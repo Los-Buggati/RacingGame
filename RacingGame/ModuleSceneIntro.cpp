@@ -16,6 +16,11 @@ ModuleSceneIntro::~ModuleSceneIntro()
 // Load assets
 bool ModuleSceneIntro::Start()
 {
+	lobato1= App->audio->LoadFx("Assets/IntroLobato.wav");
+	App->audio->PlayFx(lobato1);
+	App->audio->PlayMusic("Assets/song1.ogg");
+	
+	
 	LOG("Loading Intro assets");
 	bool ret = true;
 
@@ -310,7 +315,7 @@ bool ModuleSceneIntro::Start()
 
 
 
-
+	faryAudio = App->audio->LoadFx("Assets/TorrenteFary.wav");
 	logo = App->renderer3D->LoadTexture("Assets/Bugatti_logo.png");
 	logo2 = App->renderer3D->LoadTexture("Assets/logo2.png");
 	road = App->renderer3D->LoadTexture("Assets/pistanivelmedio2.png");
@@ -343,6 +348,12 @@ update_status ModuleSceneIntro::Update(float dt)
 	//p.Render();
 	//p.wire = false;
 
+	if (fary)
+	{
+		App->audio->PlayFx(faryAudio);
+		App->audio->PlayMusic("Assets/song2.ogg", 0);
+		fary = false;
+	}
 	angle++;
 	btQuaternion rotationQuaternion = btQuaternion(btVector3(0, 1, 0), angle * DEGTORAD);
 	for (int i = 1; i < 10; i++)

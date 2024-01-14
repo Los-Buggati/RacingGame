@@ -91,9 +91,12 @@ public:
 	PhysBody3D* constraintPlatformBody = nullptr;
 	PhysBody3D* constraintCylinderBody = nullptr;
 
+	uint faryAudio;
+	uint lobato1;
 	float wintimer = 0.0f;
 	int WinIndex = 0;
 	bool win = false;
 	bool lose = false;
+	bool fary=false;
 	int loseCount = 0;
 };

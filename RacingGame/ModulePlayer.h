@@ -41,6 +41,12 @@ public:
 	bool impulseActivated[2] = { false, false};
 	int myCar = 0;
 
+	uint torrenteCaida;
+	uint torrenteAcelera;
+
+	bool acelera = true;
+	bool faryPlayed=false;
+
 	btVector3 position;
 	vec3 InitPos = { 0,40,5 };
 };
