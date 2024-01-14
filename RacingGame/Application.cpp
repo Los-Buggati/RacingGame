@@ -15,7 +15,7 @@ Application::Application()
 	renderer = new ModuleRender(this);
 	textures = new ModuleTextures(this);
 	win = new Win(this, true);
-	fade = new ModuleFadeToBlack(this);
+	
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -28,7 +28,6 @@ Application::Application()
 	AddModule(camera);
 	AddModule(input);
 	AddModule(audio);
-	AddModule(fade);
 	AddModule(network);
 	AddModule(physics);
 	

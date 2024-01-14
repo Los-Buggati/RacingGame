@@ -38,9 +38,26 @@ bool Win::CleanUp()
 update_status Win::Update(float dt)
 {
 
+	wintimer++;
+	int time = 15;
+
+	if (wintimer < 50*time) {
+		WinIndex = 1;
+	}
+	else if (wintimer > 50*time && wintimer < 100*time) {
+		WinIndex = 2;
+	}
+	else if (wintimer > 100*time && wintimer < 150*time) {
+		WinIndex = 3;
+	}
+	if (wintimer == 150*time) {
+		wintimer = 0;
+	}
 	
-	
-	
+	/*if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		App->
+	}*/
 
 	int imageWidth = 3840;
 	int imageHeight = 2160;

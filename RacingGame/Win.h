@@ -19,5 +19,9 @@ public:
 
 	int WinIndex = 1;
 
+	float wintimer = 0.0f;
+
+
+
 };
 
