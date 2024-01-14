@@ -96,11 +96,13 @@ public:
 
 	uint faryAudio;
 	uint lobato1;
+	uint lobato2;
 	float wintimer = 0.0f;
 	int WinIndex = 0;
 	bool win = false;
 	bool lose = false;
 	bool fary=false;
+	bool lobatoPlay = false;
 	int loseCount = 0;
 	int coinCounter = 0;
 };

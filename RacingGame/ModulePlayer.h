@@ -46,6 +46,7 @@ public:
 
 	bool acelera = true;
 	bool faryPlayed=false;
+	bool lobatoPlayed=false;
 
 	btVector3 position;
 	vec3 InitPos = { 0,40,5 };

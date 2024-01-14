@@ -235,6 +235,12 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	{
 		if ((body1 == vehicle[currentCar] || body2 == vehicle[currentCar]) && (body1 == App->scene_intro->sensorWin || body2 == App->scene_intro->sensorWin))
 		{
+			if (!lobatoPlayed)
+			{
+				App->scene_intro->lobatoPlay = true;
+				lobatoPlayed = true;
+			}
+			
 			App->scene_intro->win = true;
 		}
 	}

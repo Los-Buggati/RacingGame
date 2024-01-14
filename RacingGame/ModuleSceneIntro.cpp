@@ -17,6 +17,7 @@ ModuleSceneIntro::~ModuleSceneIntro()
 bool ModuleSceneIntro::Start()
 {
 	lobato1= App->audio->LoadFx("Assets/IntroLobato.wav");
+	lobato2 = App->audio->LoadFx("Assets/VictoriaLobato.wav");
 	App->audio->PlayFx(lobato1);
 	App->audio->PlayMusic("Assets/song1.ogg");
 	
@@ -411,6 +412,12 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	if (win)
 	{
+		if (lobatoPlay)
+		{
+			App->audio->PlayFx(lobato2);
+			lobatoPlay = false;
+		}
+		
 		wintimer++;
 		float time = 0.5f;
 
