@@ -14,7 +14,8 @@ Application::Application()
 	menu = new ModuleMenu(this, false);
 	renderer = new ModuleRender(this);
 	textures = new ModuleTextures(this);
-	win = new Win(this, true);
+	win = new Win(this, false);
+	lose = new Lose(this, true);
 	
 
 	// The order of calls is very important!
@@ -32,6 +33,7 @@ Application::Application()
 	AddModule(physics);
 	
 	// Scenes
+	AddModule(lose);
 	AddModule(win);
 	AddModule(menu);
 	AddModule(scene_intro);

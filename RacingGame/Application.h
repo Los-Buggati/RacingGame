@@ -17,6 +17,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "Win.h"
+#include "Lose.h"
 
 class Application
 {
@@ -34,6 +35,7 @@ public:
 	ModuleTextures* textures;
 	ModuleRender* renderer;
 	Win* win;
+	Lose* lose;
 
 private:
 

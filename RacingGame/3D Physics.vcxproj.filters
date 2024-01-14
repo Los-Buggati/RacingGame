@@ -99,6 +99,9 @@
     <ClInclude Include="Win.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Lose.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -168,6 +171,9 @@
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="Win.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Lose.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
