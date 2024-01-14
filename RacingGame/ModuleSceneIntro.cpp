@@ -27,9 +27,68 @@ bool ModuleSceneIntro::Start()
 	sensor_cube->SetAsSensor(true);
 	sensor_cube->SetPos(0, 1, 100);
 
-	coin = Cylinder(1.0f, 0.5f);
-	coin.SetPos(5, 3, 5);
-	coin.color = Blue;
+	coin1 = Cylinder(1.0f, 0.5f);
+	coin1.SetPos(16.62f, 39.06f, 302.95f);
+	coin1.color = Blue;
+	coin1Body = App->physics->AddBody(coin1, 0.0);
+	coin1Body->SetAsSensor(true);
+	coin1.physbody = coin1Body;
+	
+	coin2 = Cylinder(1.0f, 0.5f);
+	coin2.SetPos(5, 37, 0);
+	coin2.color = Blue;
+	coin2Body = App->physics->AddBody(coin2, 0.0);
+	coin2Body->SetAsSensor(true);
+	coin2.physbody = coin2Body;
+
+	coin3 = Cylinder(1.0f, 0.5f);
+	coin3.SetPos(-53.36f, 37.51f, 176.13f);
+	coin3.color = Blue;
+	coin3Body = App->physics->AddBody(coin3, 0.0);
+	coin3Body->SetAsSensor(true);
+	coin3.physbody = coin3Body;
+	
+	coin4 = Cylinder(1.0f, 0.5f);
+	coin4.SetPos(167.51f, 35.29f, 301.84f);
+	coin4.color = Blue;
+	coin4Body = App->physics->AddBody(coin4, 0.0);
+	coin4Body->SetAsSensor(true);
+	coin4.physbody = coin4Body;
+
+	coin5 = Cylinder(1.0f, 0.5f);
+	coin5.SetPos(-499.42f, 4.97f, 206.81f);
+	coin5.color = Blue;
+	coin5Body = App->physics->AddBody(coin5, 0.0);
+	coin5Body->SetAsSensor(true);
+	coin5.physbody = coin5Body;
+
+	coin6 = Cylinder(1.0f, 0.5f);
+	coin6.SetPos(-10.48f, 65.94f, 125.51f);
+	coin6.color = Blue;
+	coin6Body = App->physics->AddBody(coin6, 0.0);
+	coin6Body->SetAsSensor(true);
+	coin6.physbody = coin6Body;
+
+	coin7 = Cylinder(1.0f, 0.5f);
+	coin7.SetPos(74.93f, 65.94f, 248.73f);
+	coin7.color = Blue;
+	coin7Body = App->physics->AddBody(coin7, 0.0);
+	coin7Body->SetAsSensor(true);
+	coin7.physbody = coin7Body;
+
+	coin8 = Cylinder(1.0f, 0.5f);
+	coin8.SetPos(-561.46f, 3.97f, 199.24f);
+	coin8.color = Blue;
+	coin8Body = App->physics->AddBody(coin8, 0.0);
+	coin8Body->SetAsSensor(true);
+	coin8.physbody = coin8Body;
+
+	coin9 = Cylinder(1.0f, 0.5f);
+	coin9.SetPos(137.90f, 35.51f, 89.16f);
+	coin9.color = Blue;
+	coin9Body = App->physics->AddBody(coin9, 0.0);
+	coin9Body->SetAsSensor(true);
+	coin9.physbody = coin9Body;
 
 	platform = Cube(50, 1, 30);
 	platform.SetPos(0, 1, 20);
@@ -209,8 +268,14 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.wire = false;
 
 	angle++;
-	coin.SetRotation(angle, vec3(0, 1, 0));
-	coin.Render();
+	coin1.SetRotation(angle, vec3(0, 1, 0));
+	coin1.Render();
+	coin2.SetRotation(angle, vec3(0, 1, 0));
+	coin2.Render();
+	coin3.SetRotation(angle, vec3(0, 1, 0));
+	coin3.Render();
+	coin4.SetRotation(angle, vec3(0, 1, 0));
+	coin4.Render();
 
 	for (int i = 0; i < 5; i++)
 	{

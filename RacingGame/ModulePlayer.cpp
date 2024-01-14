@@ -34,10 +34,13 @@ update_status ModulePlayer::Update(float dt)
 {
 	myCar = App->network->clientIndex;
 	
-	LOG("%f", vehicle[myCar]->GetRotation());
-	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()< Vehicle_Fall_Dist)
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN || vehicle[myCar]->GetPos().getY()<= Vehicle_Fall_Dist)
 	{
 		Respawn(myCar);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	{
+		DarVuelta(myCar);
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && carCount < 2)
@@ -92,12 +95,11 @@ update_status ModulePlayer::Update(float dt)
 
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		{
-			if (vehicle[myCar]->GetKmh() < 0.0f) brake[myCar] = BRAKE_POWER;
-			else acceleration[myCar] = MAX_ACCELERATION;
+			acceleration[myCar] = MAX_ACCELERATION;
 			up[myCar] = true;
 		}
 		else up[myCar] = false;
-		
+
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
 			acceleration[myCar] = -MAX_ACCELERATION;
@@ -123,11 +125,11 @@ update_status ModulePlayer::Update(float dt)
 
 		if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
 		{
-			if (vehicle[myCar]->GetKmh() > 0.0f) brake[myCar] = BRAKE_POWER;
-			else acceleration[myCar] = -MAX_ACCELERATION / 2;
+			brake[myCar] = BRAKE_POWER;
 			down[myCar] = true;
 		}
 		else down[myCar] = false;
+
 
 		if (impulseActivated[myCar])
 		{
@@ -147,12 +149,12 @@ update_status ModulePlayer::Update(float dt)
 		//change car mass
 		if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			vehicle[myCar]->info.mass++;
+			vehicle[myCar]->info.mass=vehicle[myCar]->info.mass+10;
 			LOG("%f", vehicle[myCar]->info.mass);
 		}
 		if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			vehicle[myCar]->info.mass--;
+			vehicle[myCar]->info.mass=vehicle[myCar]->info.mass-10;
 		}
 		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
@@ -209,12 +211,12 @@ void ModulePlayer::CreateCar(int carIndex)
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 1.2, 4);
 	car.chassis_offset.Set(0, 0.5, 0);
-	car.mass = 500.0f;
+	car.mass = 600.0f;
 	car.suspensionStiffness = 15.88f;
 	car.suspensionCompression = 0.83f;
 	car.suspensionDamping = 0.88f;
 	car.maxSuspensionTravelCm = 1000.0f;
-	car.frictionSlip = 1;
+	car.frictionSlip = 30.5;
 	car.maxSuspensionForce = 6000.0f;
 	if (carIndex == 0) car.wheelColor = Black;
 	else car.wheelColor = Red;
@@ -294,6 +296,13 @@ void ModulePlayer::CreateCar(int carIndex)
 void ModulePlayer:: Respawn(int carIndex)
 {
 	vehicle[carIndex]->SetPos(carIndex * InitPos.x, InitPos.y, InitPos.z);
+	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
+	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
+	vehicle[carIndex]->Orient(3.14 / 2);
+}
+
+void ModulePlayer::DarVuelta(int carIndex)
+{
 	vehicle[carIndex]->SetAngularVelocity(0, 0, 0);
 	vehicle[carIndex]->SetLinearVelocity(0, 0, 0);
 	vehicle[carIndex]->Orient(3.14 / 2);

@@ -8,7 +8,7 @@
 #include "ModulePhysics3D.h"
 using namespace std;
 
-#define Vehicle_Fall_Dist -100
+#define Vehicle_Fall_Dist 1
 #define MAX_SNAKE 2
 
 struct PhysBody3D;
@@ -54,7 +54,25 @@ public:
 
 	PhysBody3D* sensor_cube;
 	PhysBody3D* mud;
-	Cylinder coin;
+	Cylinder coin1;
+	Cylinder coin2;
+	Cylinder coin3;
+	Cylinder coin4;
+	Cylinder coin5;
+	Cylinder coin6;
+	Cylinder coin7;
+	Cylinder coin8;
+	Cylinder coin9;
+
+	PhysBody3D* coin1Body;
+	PhysBody3D* coin2Body;
+	PhysBody3D* coin3Body;
+	PhysBody3D* coin4Body;
+	PhysBody3D* coin5Body;
+	PhysBody3D* coin6Body;
+	PhysBody3D* coin7Body;
+	PhysBody3D* coin8Body;
+	PhysBody3D* coin9Body;
 	Cube platform;
 	Cylinder cylinder;
 	Sphere sphere;
